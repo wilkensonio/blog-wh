@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import articlesRouter from './routes/articles.js'; 
-import subscribeRouter from './routes/subscribe.route.js';
+import articleRoutes from './routes/article.route.js'; 
+import subscribeRoutes from './routes/subscribe.route.js';
 import Article from './models/article.js';
 import methodOverride from 'method-override';
 
@@ -15,6 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 app.set('views', path.join(__dirname, '../client/views'));
 app.use('/styles', express.static(path.join(__dirname, 'styles')));
@@ -22,20 +23,14 @@ app.use('/styles', express.static(path.join(__dirname, 'styles')));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
-app.use(methodOverride('_method'));
-
 
 app.get('/', async (req, res) => { 
     res.render('subscribe/index');
-});
+}); 
 
-app.get('/articles', async (req, res) => {
-    const articles = await Article.find().sort({ createdAt: 'desc' }); 
-    res.render('articles/index', { articles: articles});
-});
-
-app.use('/articles', articlesRouter);
-app.use('/subscribe', subscribeRouter);
+app.use('/articles', articleRoutes);
+app.use('/subscribe', subscribeRoutes);
+ 
 
 app.listen(8000, () => {
     console.log('Server is running on http://localhost:8000');
