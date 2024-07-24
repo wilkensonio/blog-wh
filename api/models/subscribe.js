@@ -9,11 +9,17 @@ const subscribeSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         lowercase: true
+    }, 
+    
+    verificationToken: {
+        type: String, 
+        required: true 
     },
 
-    isAdmin: {
-        type: Boolean,
-        default: false
+    deviceId: { 
+        type: String, 
+        required: true, 
+        unique: true 
     },
 
     createdAt: {
@@ -21,7 +27,7 @@ const subscribeSchema = new mongoose.Schema({
         default: new Date()
     }, 
 
-    });
+});
 
 const Subscribe = mongoose.model('Subscribe', subscribeSchema);
 export default Subscribe;

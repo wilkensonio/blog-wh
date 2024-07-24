@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import articlesRouter from './routes/articles.js'; 
-import subscribeRouter from './routes/subscribe.js';
+import subscribeRouter from './routes/subscribe.route.js';
 import Article from './models/article.js';
 import methodOverride from 'method-override';
 
