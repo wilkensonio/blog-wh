@@ -17,7 +17,7 @@
         <%- include('../partials/header') %>
     </header>
     <div class="container">
-        <h1 class="mb-4 d-flex justify-content-center">Edit Article</h1>
+        <h1 class="mb-4 d-flex justify-content-center text-white">Edit Article</h1>
         <form action="/articles/<%= article.id %>?_method=PUT" method="POST">
             <%- include('_form_fields' )%>
         </form>
