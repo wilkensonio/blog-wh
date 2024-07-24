@@ -1,0 +1,33 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "sass": "sass --watch styles/main.scss styles/main.css",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "dompurify": "^3.1.6",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "jsdom": "^24.1.1",
+    "marked": "^13.0.2",
+    "mermaid": "^10.9.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.5.1",
+    "nodemailer": "^6.9.14",
+    "sass": "^1.77.8",
+    "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

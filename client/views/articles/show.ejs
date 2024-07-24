@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="../styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="../styles/mermaid/mermaid.min.js"></script>
+</head>
+
+<body>
+    <div class="container text-white">
+        <div class="mb-5">
+            <a href="/articles" class="btn btn-secondary mt-5">All articles</a>
+            <a href="/articles/edit/<%= article.id %>?_method=PUT" class="btn btn-info mt-5">Edit</a>
+            <a href="/articles/edit/<%= article.id %>?_method=PUT" class="btn btn-primary mt-5">Dashboard</a>
+        </div>
+        <h1 class="mb-1">
+            <%= article.title %>
+        </h1>
+        <h6>
+            <%= article.description %>
+        </h6>
+        <div class="text-muted mb-2">
+            <%= article.createdAt.toLocaleDateString() %>
+        </div>
+        <div id="content">
+            <%- article.sanitizedHtml %>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            mermaid.initialize({ startOnLoad: true });
+        });
+    </script>
+    <script src="../styles/bootstrap-js/bootstrap.min.js"></script>
+</body>
+
+</html>
