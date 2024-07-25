@@ -55,7 +55,7 @@ const postProcessHtml = (html) => {
 
     // Replace `language-mermaid` with `mermaid`
     processedHtml = processedHtml.replace(/class="language-mermaid"/g, 'class="mermaid"');
-    processedHtml = processedHtml.replace(/<table>/g, '<table class="table text-white">');
+    processedHtml = processedHtml.replace(/<table>/g, '<table class="table table-borderless text-white">');
 
     return processedHtml;
 };

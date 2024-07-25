@@ -1,5 +1,7 @@
 **/.env
 .env
+
+**/maps/style.css.map
 # Logs
 logs
 *.log
