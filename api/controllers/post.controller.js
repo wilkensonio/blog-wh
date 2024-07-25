@@ -4,7 +4,10 @@ import Article from '../models/article.js';
 
 export const renderArticles = async (req, res) => {
     const articles = await Article.find().sort({ createdAt: 'desc' });
-    res.render('articles/index', { articles: articles}); 
+    const isAdmin = req.user && req.user.isAdmin === true;
+    const isWriter = req.user && req.user.isWriter === true;
+
+    res.render('articles/index', { articles: articles, isAdmin: isAdmin, isWriter: isWriter }); 
 }
 
 export const renderNewArticle = async (req, res) => { 
@@ -19,7 +22,9 @@ export const renderEditArticle = async (req, res) => {
 export const renderShowArticle = async (req, res) => {
     const article = await Article.findOne({ slug: req.params.slug });
     if (article == null) res.redirect('/');
-    res.render('articles/show', { article: article});
+    const isAdmin = req.user && req.user.isAdmin === true;
+    const isWriter = req.user && req.user.isWriter === true;
+    res.render('articles/show', { article: article, isAdmin: isAdmin, isWriter: isWriter });
    
 }
  
