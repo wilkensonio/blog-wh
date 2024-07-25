@@ -1,4 +1,5 @@
 import express from 'express';
+
 import { 
     renderArticles,
     renderNewArticle,
@@ -8,9 +9,12 @@ import {
     updateArticle,
     saveArticleAndRedirect,
     deleteArticle 
-} from '../controllers/post.controller.js'; 
+} 
+from '../controllers/post.controller.js'; 
+import { isAuthenticated } from '../middelware/auth.js';
 
 const router = express.Router();
+router.use(isAuthenticated);
 
 router.get('/', renderArticles);    
 router.get('/new', renderNewArticle);

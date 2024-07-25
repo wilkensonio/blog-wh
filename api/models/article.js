@@ -65,8 +65,7 @@ articleSchema.pre('validate', function(next) {
     }
     if (this.markdown) {
         const sanitizedHtml = sanitizeWithMermaidSupport(this.markdown);
-        this.sanitizedHtml = postProcessHtml(sanitizedHtml);
-        console.log("Sanitized HTML:", this.sanitizedHtml );
+        this.sanitizedHtml = postProcessHtml(sanitizedHtml); 
     }
     next();
 });

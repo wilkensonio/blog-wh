@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Blog Admin</title>
+  <title>Blog</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -41,7 +41,11 @@
               </div>
               <div class="profile-name">
                 <h5 class="mb-0 font-weight-normal">Wilkenson</h5>
-                <span>Admin</span>
+                <% if (isAdmin) { %>
+                  <span>Admin</span>
+                  <% } else if (isWriter) { %>
+                    <span>Writer</span>
+                    <% }%>
               </div>
             </div>
             <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -93,59 +97,62 @@
             <span class="menu-title">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="/admin/subscribe">
-            <span class="menu-icon">
-              <i class="mdi mdi-account-multiple"></i>
-            </span>
-            <span class="menu-title">Subscribers</span>
-            <i class="menu-arrow"></i>
-          </a>
-        </li>
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="/admin/activities">
-            <span class="menu-icon">
-              <i class="mdi mdi-playlist-play"></i>
-            </span>
-            <span class="menu-title">Activities</span>
-            <i class="menu-arrow"></i>
-          </a>
-        </li>
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="/articles">
-            <span class="menu-icon">
-              <i class="mdi mdi-file-document"></i>
-            </span>
-            <span class="menu-title">Articles</span>
-            <i class="menu-arrow"></i>
-          </a>
-        </li>
-
-        <li class="nav-item menu-items" hidden>
-          <a class="nav-link" href="/admin/signup" aria-controls="auth">
-            <span class="menu-icon">
-              <i class="mdi mdi-account-box-outline"></i>
-            </span>
-            <span class="menu-title">Sign up</span>
-            <i class="menu-arrow"></i>
-          </a>
-        </li>
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="/admin/login">
-            <span class="menu-icon">
-              <i class="mdi mdi-account"></i>
-            </span>
-            <span class="menu-title">Login</span>
-          </a>
-        </li>
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="/admin/logout">
-            <span class="menu-icon">
-              <i class="mdi mdi-arrow-right"></i>
-            </span>
-            <span class="menu-title">Logout</span>
-          </a>
-        </li>
+        <% if (isAdmin) { %>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/subscribe">
+              <span class="menu-icon">
+                <i class="mdi mdi-account-multiple"></i>
+              </span>
+              <span class="menu-title">Subscriberss</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
+          <% } %>
+            <li class="nav-item menu-items">
+              <a class="nav-link" href="/admin/activities">
+                <span class="menu-icon">
+                  <i class="mdi mdi-playlist-play"></i>
+                </span>
+                <span class="menu-title">Activities</span>
+                <i class="menu-arrow"></i>
+              </a>
+            </li>
+            <% if (isAdmin || isWriter) { %>
+              <li class="nav-item menu-items">
+                <a class="nav-link" href="/articles">
+                  <span class="menu-icon">
+                    <i class="mdi mdi-file-document"></i>
+                  </span>
+                  <span class="menu-title">Articles</span>
+                  <i class="menu-arrow"></i>
+                </a>
+              </li>
+              <% } %>
+                <li class="nav-item menu-items" hidden>
+                  <a class="nav-link" href="/admin/signup" aria-controls="auth">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-account-box-outline"></i>
+                    </span>
+                    <span class="menu-title">Sign up</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                </li>
+                <li class="nav-item menu-items">
+                  <a class="nav-link" href="/admin/login">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-account"></i>
+                    </span>
+                    <span class="menu-title">Login</span>
+                  </a>
+                </li>
+                <li class="nav-item menu-items">
+                  <a class="nav-link" href="/admin/logout">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-arrow-right"></i>
+                    </span>
+                    <span class="menu-title">Logout</span>
+                  </a>
+                </li>
       </ul>
     </nav>
     <!-- partial -->
@@ -165,7 +172,7 @@
           </ul>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item  ">
-              <a class="nav-link">
+              <a class="nav-link" href="/admin/logout">
                 <div class="navbar-profile">
                   <p class="mb-0 d-none d-sm-block btn btn-secondary">Logout</p>
                 </div>
@@ -175,7 +182,7 @@
         </div>
       </nav>
       <!-- partial -->
-      <% if (partial==='subscriber' ) { %>
+      <% if (partial==='subscriber' && (isAdmin || isWriter)) { %>
         <%- include('../partials/_subscribe') %>
           <% } %>
 

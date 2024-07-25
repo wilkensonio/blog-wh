@@ -2,6 +2,10 @@
 import Subscriber from '../models/subscribe.js'; 
 import { v4 as uuidv4 } from 'uuid'; 
 
+export const renderSubscribePage = (req, res) => {
+    res.render('subscribe/index');
+};
+
 export const subscribe = async (req, res) => {
 
     try {
