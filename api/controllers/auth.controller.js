@@ -86,4 +86,12 @@ export const logout = (req, res) => {
     res.redirect('/admin/login');
 }
 
- 
+
+export const resetPassword =   (req, res, next) => {
+    const { email } = req.body;
+    if (!email) {
+        return next(errorHandler(400, "Email is required."));
+    }
+    // send email with reset link
+    res.redirect('/admin/login');
+}
