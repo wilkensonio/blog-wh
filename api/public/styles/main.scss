@@ -22,4 +22,16 @@ body{
             border-color: $alternate-color;
         }
     }
+
+    .btn-custom-info {
+        background-color: $custom-info;
+        border-color: $custom-info;
+        color: #fff; // White text for better contrast
+
+        &:hover {
+            background-color: darken($custom-info, 10%);
+            border-color: darken($custom-info, 10%);
+        }
+    } 
+
 }

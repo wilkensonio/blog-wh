@@ -1,6 +1,61 @@
  
 import Article from '../models/article.js';
 
+export const likeArticle = async (req, res) => {
+    try {
+        const article = await Article.findOne({ slug: req.params.slug });
+    if (!article) {
+        return;
+        // return res.status(404).send('Article not found');
+    }
+    article.likes++;
+    await article.save();
+    res.redirect(`/articles/${article.slug}`);
+    } catch (error) {
+        res.status(500).send('Internal server error');
+    } 
+};
+
+export const commentOnArticle = async (req, res) => {
+    try {
+        const article = await Article.findOne({ slug: req.params.slug });
+        if (!article) {
+            return;
+            // return res.status(404).send('Article not found');
+        }
+        article.comments.push({
+            user: req.body.name,
+            comment: req.body.comment
+        });
+        await article.save();
+        res.redirect(`/articles/${article.slug}`);
+    } catch (error) {
+            res.status(500).send('Internal server error');
+    } 
+};
+
+export const replyToComment = async (req, res) => {
+    try {
+        const article = await Article.findOne({ slug: req.params.slug });
+        if (!article) {
+            return;
+            // return res.status(404).send('Article not found');
+        }
+        const comment = article.comments.id(req.params.commentId);
+        if (!comment) {
+            return;
+            // return res.status(404).send('Comment not found');
+        }
+        comment.replies.push({
+            user: req.body.name,
+            content: req.body.content
+        });
+        await article.save();
+        res.redirect(`/articles/${article.slug}`);
+    } catch (error) {
+        res.status(500).send('Internal server error');
+    } 
+};
 
 export const renderArticles = async (req, res) => {
     const articles = await Article.find().sort({ createdAt: 'desc' });

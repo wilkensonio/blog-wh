@@ -61,6 +61,42 @@ hr.divider-or {
   color: #f7fafc;
 }
 
+.btn-custom-dark {
+  background-color: #343a40; /* Darker shade of gray */
+  color: #ffffff; /* White text */
+  border: none; /* Remove default border */
+}
+
+.btn-custom-dark:hover {
+  background-color: #23272b; /* Even darker shade on hover */
+  color: #ffffff; /* White text on hover */
+}
  
+
+/* Custom Blue Button */
+.btn-custom-blue {
+  background-color: #007bff; /* Custom blue color */
+  color: #ffffff; /* White text */
+  border: none; /* Remove default border */
+}
+
+.btn-custom-blue:hover {
+  background-color: #1e90ff; /* Darker blue for hover effect */
+  color: #ffffff; /* White text on hover */
+}
+
+/* Custom Info Button */
+.btn-custom-info {
+  background-color: #17a2b8; /* Custom info color (light teal) */
+  color: #ffffff; /* White text */
+  border: none; /* Remove default border */
+}
+
+.btn-custom-info:hover {
+  background-color: #117a8b; /* Darker teal for hover effect */
+  color: #ffffff; /* White text on hover */
+}
+
  
-/*# sourceMappingURL=main.css.map */
+
+

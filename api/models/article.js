@@ -10,6 +10,29 @@ const window = new JSDOM("").window;
 const DOMPurify = createDOMPurify(window); 
 
 
+const replySchema = new mongoose.Schema({
+    user: String,
+    content:{
+        type: String, 
+    },
+    createdAt: {    
+        type: Date, 
+        default: new Date()
+    }
+});
+
+const commentSchema = new mongoose.Schema({
+    user: String,
+    comment: {
+        type: String, 
+    },
+    createdAt: {
+        type: Date,
+        default: new Date()
+    },
+    replies: [replySchema]
+});
+
 const articleSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -39,6 +62,11 @@ const articleSchema = new mongoose.Schema({
         type: Date, 
         default: new Date()
     },
+    comments: [commentSchema],
+    likes: {
+        type: Number,
+        default: 1
+    }
 });
 const sanitizeWithMermaidSupport = (markdownContent) => {
     // Convert Markdown to HTML and sanitize it

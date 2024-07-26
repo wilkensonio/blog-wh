@@ -7,16 +7,57 @@
     <title>Blog</title>
     <link rel="stylesheet" href="../styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/mdi-icons.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css"
+        integrity="sha512-/k658G6UsCvbkGRB3vPXpsPHgWeduJwiWGPCGS14IQw3xpr63AEMdA8nMYG2gmYkXitQxDTn6iiK/2fD4T87qA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../styles/mermaid/mermaid.min.js"></script>
+
+
 </head>
 
 <body>
     <div class="container text-white">
-        <div class="mb-5">
-            <a href="/articles" class="btn btn-secondary mt-5">All articles</a>
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button>
+                <form action="/articles">
+                    <button class="btn btn-custom-dark">
+                        <i class="mdi mdi-arrow-left"></i> All articles
+                    </button>
+                </form>
+                <button>
+                    <form action="/articles/<%= article.slug %>/like" method="POST">
+                        <button class="btn btn-custom-blue">
+                            <i class="mdi mdi-thumb-up"></i>
+                            <% if (article.likes> 0 && article.likes < 100) { %>
+                                    <span class="badge rounded-pill bg-danger ms-2">
+                                        <%= article.likes %>
+                                    </span>
+                                    <% } else { %>
+                                        <span class="badge rounded-pill bg-danger ms-2">
+                                            99+
+                                        </span>
+                                        <% }%>
+                        </button>
+                    </form>
+                </button>
+                <button>
+                    <form action="">
+                        <button class="btn btn-custom-info">
+                            <i class="mdi mdi-comment"></i> View all comments
+                            <span class="badge rounded-pill bg-danger ms-2">99+</span>
+                        </button>
+                    </form>
+                </button>
+        </div>
+        <div class="btn-group mt-5 mb-5 sticky-top">
+
+
+
             <% if (isWriter || isAdmin) { %>
-                <a href="/articles/edit/<%= article.id %>?_method=PUT" class="btn btn-info mt-5">Edit</a>
-                <a href="/admin" class="btn btn-orange mt-5">Dashboard</a>
+                <a href="/articles/edit/<%= article.id %>?_method=PUT" class="btn btn-custom-dark">Edit</a>
+                <a href="/admin" class="btn btn-orange">Dashboard</a>
                 <% } %>
         </div>
         <h1 class="mb-1">
@@ -31,6 +72,34 @@
         <div id="content">
             <%- article.sanitizedHtml %>
         </div>
+        <!-- Comments Section -->
+        <hr>
+        <div class="comments-section">
+            <h2 class="text-white">Comments</h2>
+            <% if (article.comments.length===0) { %>
+                <p class="text-muted">No comments yet.</p>
+                <% } else { %>
+                    <ul class="list-unstyled">
+                        <% article.comments.forEach(comment=> { %>
+                            <li class="comment-card">
+                                <div class="card bg-dark text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= comment.user %>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%= comment.text %>
+                                        </p>
+                                        <p class="text-muted">
+                                            <%= new Date(comment.createdAt).toLocaleDateString() %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <% }); %>
+                    </ul>
+                    <% } %>
+        </div>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -38,6 +107,9 @@
         });
     </script>
     <script src="../styles/bootstrap-js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/fontawesome.min.js"
+        integrity="sha512-NeFv3hB6XGV+0y96NVxoWIkhrs1eC3KXBJ9OJiTFktvbzJ/0Kk7Rmm9hJ2/c2wJjy6wG0a0lIgehHjCTDLRwWw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>
