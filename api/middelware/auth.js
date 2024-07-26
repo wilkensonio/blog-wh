@@ -5,6 +5,7 @@ export const isAuthenticated = (req, res, next) => {
     if (!token) {
         res.locals.isAdmin = false;
         res.locals.isWriter = false;
+        res.locals.isAuthenticated = false;
         return next();
     }
     try {
@@ -15,9 +16,13 @@ export const isAuthenticated = (req, res, next) => {
                 return next()
             }
             req.user = decoded;
+            res.locals.isAuthenticated = true;
             return next();
         });
     } catch (error) {
+        res.locals.isAuthenticated = false;
+        res.locals.isAdmin = false;
+        res.locals.isWriter = false;
         return next();
     } 
 }

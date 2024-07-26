@@ -89,70 +89,76 @@
         <li class="nav-item nav-category">
           <span class="nav-link">Navigation</span>
         </li>
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="/admin">
-            <span class="menu-icon">
-              <i class="mdi mdi-laptop"></i>
-            </span>
-            <span class="menu-title">Dashboard</span>
-          </a>
-        </li>
-        <% if (isAdmin) { %>
+        <% if (isAuthenticated) { %>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/admin/subscribe">
+            <a class="nav-link" href="/admin">
               <span class="menu-icon">
-                <i class="mdi mdi-account-multiple"></i>
+                <i class="mdi mdi-laptop"></i>
               </span>
-              <span class="menu-title">Subscriberss</span>
-              <i class="menu-arrow"></i>
+              <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <% } %>
+          <% if (isAdmin) { %>
             <li class="nav-item menu-items">
-              <a class="nav-link" href="/admin/activities">
+              <a class="nav-link" href="/admin/subscribe">
                 <span class="menu-icon">
-                  <i class="mdi mdi-playlist-play"></i>
+                  <i class="mdi mdi-account-multiple"></i>
                 </span>
-                <span class="menu-title">Activities</span>
+                <span class="menu-title">Subscriberss</span>
                 <i class="menu-arrow"></i>
               </a>
             </li>
-            <% if (isAdmin || isWriter) { %>
+            <% } %>
               <li class="nav-item menu-items">
-                <a class="nav-link" href="/articles">
+                <a class="nav-link" href="/admin/activities">
                   <span class="menu-icon">
-                    <i class="mdi mdi-file-document"></i>
+                    <i class="mdi mdi-playlist-play"></i>
                   </span>
-                  <span class="menu-title">Articles</span>
+                  <span class="menu-title">Activities</span>
                   <i class="menu-arrow"></i>
                 </a>
               </li>
               <% } %>
-                <li class="nav-item menu-items" hidden>
-                  <a class="nav-link" href="/admin/signup" aria-controls="auth">
-                    <span class="menu-icon">
-                      <i class="mdi mdi-account-box-outline"></i>
-                    </span>
-                    <span class="menu-title">Sign up</span>
-                    <i class="menu-arrow"></i>
-                  </a>
-                </li>
-                <li class="nav-item menu-items">
-                  <a class="nav-link" href="/admin/login">
-                    <span class="menu-icon">
-                      <i class="mdi mdi-account"></i>
-                    </span>
-                    <span class="menu-title">Login</span>
-                  </a>
-                </li>
-                <li class="nav-item menu-items">
-                  <a class="nav-link" href="/admin/logout">
-                    <span class="menu-icon">
-                      <i class="mdi mdi-arrow-right"></i>
-                    </span>
-                    <span class="menu-title">Logout</span>
-                  </a>
-                </li>
+
+                <% if (isAdmin || isWriter) { %>
+                  <li class="nav-item menu-items">
+                    <a class="nav-link" href="/articles">
+                      <span class="menu-icon">
+                        <i class="mdi mdi-file-document"></i>
+                      </span>
+                      <span class="menu-title">Articles</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                  </li>
+                  <% } %>
+                    <li class="nav-item menu-items" hidden>
+                      <a class="nav-link" href="/admin/signup" aria-controls="auth">
+                        <span class="menu-icon">
+                          <i class="mdi mdi-account-box-outline"></i>
+                        </span>
+                        <span class="menu-title">Sign up</span>
+                        <i class="menu-arrow"></i>
+                      </a>
+                    </li>
+                    <% if (!isAuthenticated) { %>
+                      <li class="nav-item menu-items">
+                        <a class="nav-link" href="/admin/login">
+                          <span class="menu-icon">
+                            <i class="mdi mdi-account"></i>
+                          </span>
+                          <span class="menu-title">Login</span>
+                        </a>
+                      </li>
+                      <% } else { %>
+                        <li class="nav-item menu-items">
+                          <a class="nav-link" href="/admin/logout">
+                            <span class="menu-icon">
+                              <i class="mdi mdi-arrow-right"></i>
+                            </span>
+                            <span class="menu-title">Logout</span>
+                          </a>
+                        </li>
+                        <%}%>
       </ul>
     </nav>
     <!-- partial -->
@@ -171,13 +177,15 @@
             </li>
           </ul>
           <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item  ">
-              <a class="nav-link" href="/admin/logout">
-                <div class="navbar-profile">
-                  <p class="mb-0 d-none d-sm-block btn btn-secondary">Logout</p>
-                </div>
-              </a>
-            </li>
+            <% if (isAuthenticated) { %>
+              <li class="nav-item  ">
+                <a class="nav-link" href="/admin/logout">
+                  <div class="navbar-profile">
+                    <p class="mb-0 d-none d-sm-block btn btn-secondary">Logout</p>
+                  </div>
+                </a>
+              </li>
+              <% } %>
           </ul>
         </div>
       </nav>
