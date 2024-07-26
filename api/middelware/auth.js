@@ -6,6 +6,7 @@ export const isAuthenticated = (req, res, next) => {
         res.locals.isAdmin = false;
         res.locals.isWriter = false;
         res.locals.isAuthenticated = false;
+        res.locals.name = null;
         return next();
     }
     try {
@@ -13,16 +14,19 @@ export const isAuthenticated = (req, res, next) => {
             if (err) {
                 res.locals.isAdmin = false;
                 res.locals.isWriter = false;
+                res.locals.name = null;
                 return next()
             }
             req.user = decoded;
             res.locals.isAuthenticated = true;
+            res.locals.name = decoded.name || null;
             return next();
         });
     } catch (error) {
         res.locals.isAuthenticated = false;
         res.locals.isAdmin = false;
         res.locals.isWriter = false;
+        res.locals.name = null;
         return next();
     } 
 }
