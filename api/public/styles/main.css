@@ -97,6 +97,9 @@ hr.divider-or {
   color: #ffffff; /* White text on hover */
 }
 
- 
+.icon-color button i {
+  color: white;
+}
+
 
 

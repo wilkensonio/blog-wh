@@ -45,7 +45,7 @@ const articleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    pusblished: {
+    published: {
         type: Boolean,
         default: false 
     },

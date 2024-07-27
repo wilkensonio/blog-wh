@@ -1,21 +1,20 @@
 <div class="form-group">
-    <label for="title">Title</label>
+    <label for="title"><span class="text-white">Title</span></label>
     <input type="text" class="form-control" id="title" placeholder="Article's title" name="title"
         value="<%= article.title %>" required>
 </div>
 <div class="form-group">
-    <label for="description">Description</label>
+    <label for="description"><span class="text-white">Description</span></label>
     <textarea rows="3" type="text" class="form-control" id="description" placeholder="Article's description"
         name="description" required><%= article.description %></textarea>
 </div>
 <div class="form-group">
-    <label for="markdown">Markdown</label>
+    <label for="markdown"><span class="text-white">Markdown</span></label>
     <textarea rows="15" type="text" class="form-control" id="markdown" placeholder="Start writing article"
         name="markdown" required><%= article.markdown %></textarea>
 </div>
 <div class="mt-4 ">
     <a href="/articles" class="btn btn-secondary"> Cancel</a>
     <button class="btn btn-primary ml-4" type="submit">save</button>
-    <a href="/publish" class="btn btn-success ml-4" type="submit">Publish</a>
     <a href="/admin" class="btn btn-orange ml-4" type="submit">Dashboard</a>
 </div>

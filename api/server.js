@@ -7,7 +7,6 @@ import methodOverride from 'method-override';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser'; 
- 
 
 const app = express(); 
 app.use(cookieParser());
@@ -29,10 +28,6 @@ app.set('views', [
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
-
-// app.get('/', async (req, res) => { 
-//     res.render('subscribe/index');
-// }); 
 
 app.use('/articles', articleRoutes);
 app.use('/subscribe', subscribeRoutes);
