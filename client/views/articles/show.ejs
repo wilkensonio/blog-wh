@@ -12,6 +12,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css"
         integrity="sha512-/k658G6UsCvbkGRB3vPXpsPHgWeduJwiWGPCGS14IQw3xpr63AEMdA8nMYG2gmYkXitQxDTn6iiK/2fD4T87qA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../styles/mermaid/mermaid.min.js"></script>
 
 
@@ -80,10 +82,10 @@
             <div>
                 <div class="d-flex justify-content-start">
                     <form action="/articles/<%= article.slug %>/like" method="POST" class="me-5">
-                        <div class="icon-color d-flex flex-column align-items-center">
+                        <div class="icon-color d-flex flex-column align-items-center mb-5">
                             <button type="submit" style="background: none; border: none; padding: 0; margin: 0;">
                                 <span class="color-white"><i class="mdi mdi-thumb-up"></i></span>
-                                <div class="text-white">Likes</div>
+                                <span class="text-white">Likes</span>
                             </button>
                         </div>
                     </form>
@@ -100,6 +102,13 @@
         </div>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
+
+                document.querySelectorAll('pre code').forEach((block) => {
+                    if (!block.classList.contains('mermaid')) {
+                        console.log(block);
+                        hljs.highlightElement(block);
+                    }
+                });
                 mermaid.initialize({ startOnLoad: true });
             });
         </script>

@@ -98,8 +98,22 @@ hr.divider-or {
 }
 
 .icon-color button i {
-  color: white;
+  color: white;  
+  cursor: pointer;
 }
 
+/* code block  */
+pre code.language-python,
+pre code.language-java,
+pre code.language-javascript,
+pre code.language-css {
+  color: rgb(17, 229, 17);
+    background:  none;  
+    /* border-bottom: #303336 1px solid;   */
+}
 
+ 
+pre code.language-mermaid {
+    background: initial;  
+}
 

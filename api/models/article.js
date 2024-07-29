@@ -68,6 +68,9 @@ const articleSchema = new mongoose.Schema({
         default: 1
     }
 });
+ 
+
+ 
 const sanitizeWithMermaidSupport = (markdownContent) => {
     // Convert Markdown to HTML and sanitize it
     return DOMPurify.sanitize(marked(markdownContent));
@@ -84,6 +87,11 @@ const postProcessHtml = (html) => {
     // Replace `language-mermaid` with `mermaid`
     processedHtml = processedHtml.replace(/class="language-mermaid"/g, 'class="mermaid"');
     processedHtml = processedHtml.replace(/<table>/g, '<table class="table table-borderless text-white">');
+    
+    processedHtml = processedHtml.replace(/<pre><code class="language-(?!mermaid)(\S*)">/g, '<pre><code class="language-$1">');
+    // processedHtml = processedHtml.replace(/<pre>/g, '<pre><code>');
+    // processedHtml = processedHtml.replace(/<\/pre>/g, '</code></pre>');
+    // processedHtml = processedHtml.replace(/<pre><code class="language-(?!mermaid)/g, '<pre><code>');
 
     return processedHtml;
 };
