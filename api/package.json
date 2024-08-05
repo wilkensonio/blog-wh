@@ -2,6 +2,9 @@
   "name": "blog",
   "version": "1.0.0",
   "main": "server.js",
+  "engines": {
+    "node": ">=15.20.1"
+  },
   "scripts": {
     "sass": "sass --watch styles/main.scss styles/main.css",
     "dev": "nodemon server.js",
