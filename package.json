@@ -7,7 +7,7 @@
     "sass": "sass --watch styles/main.scss styles/main.css",
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "build": "node ../build.js"
+    "build": "npm install && npm start"
   },
   "keywords": [],
   "author": "",
