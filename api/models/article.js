@@ -67,9 +67,7 @@ const articleSchema = new mongoose.Schema({
         type: Number,
         default: 1
     }
-});
- 
-
+}); 
  
 const sanitizeWithMermaidSupport = (markdownContent) => {
     // Convert Markdown to HTML and sanitize it
@@ -84,17 +82,15 @@ const postProcessHtml = (html) => {
         .replace(/&quot;/g, '"')
         .replace(/&#39;/g, "'");
 
-    // Replace `language-mermaid` with `mermaid`
+    // Replaced `language-mermaid` with `mermaid`
     processedHtml = processedHtml.replace(/class="language-mermaid"/g, 'class="mermaid"');
     processedHtml = processedHtml.replace(/<table>/g, '<table class="table table-borderless text-white">');
-    
-    processedHtml = processedHtml.replace(/<pre><code class="language-(?!mermaid)(\S*)">/g, '<pre><code class="language-$1">');
-    // processedHtml = processedHtml.replace(/<pre>/g, '<pre><code>');
-    // processedHtml = processedHtml.replace(/<\/pre>/g, '</code></pre>');
-    // processedHtml = processedHtml.replace(/<pre><code class="language-(?!mermaid)/g, '<pre><code>');
 
+    processedHtml = processedHtml.replace(/<pre><code class="language-(?!mermaid)(\S*)">/g, '<pre><code class="language-$1">');
+   
     return processedHtml;
 };
+
 articleSchema.pre('validate', function(next) {
     if (this.title) {
         this.slug = slugify(this.title, { lower: true, strict: true });
