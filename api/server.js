@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 app.use(methodOverride('_method')); 
 
 app.set('views', [
-    path.join(__dirname, 'client/views'),
-    path.join(__dirname, 'client/admin')
+    path.join(__dirname, '../client/views'),
+    path.join(__dirname, '../client/admin')
 ]);  
 
 app.set('view engine', 'ejs');
