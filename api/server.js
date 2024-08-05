@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/articles', articleRoutes);
 app.use('/subscribe', subscribeRoutes);
-app.use('/', subscribeRoutes);
+app.use('/home', subscribeRoutes);
 app.use('/admin', adminRoutes);
  
  
