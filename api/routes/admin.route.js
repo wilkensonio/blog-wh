@@ -1,6 +1,6 @@
-import express from 'express';
-import { isAdminOrWriter, isAuthenticated } from '../middelware/auth.js';
-import { signup, signin, logout } from '../controllers/auth.controller.js';
+const express = require('express');
+const { isAdminOrWriter, isAuthenticated } = require('../middelware/auth.js');
+const { signup, signin, logout } = require('../controllers/auth.controller.js');
 
 const router = express.Router();
 
@@ -43,4 +43,4 @@ router.get('/posts', isAdminOrWriter, (req, res) => {
     res.render('dash/index', { partial: 'articles' });
 });
 
-export default router;
+module.exports = router;

@@ -1,7 +1,7 @@
  
-import Article from '../models/article.js';
+const Article = require('../models/article.js');
 
-export const likeArticle = async (req, res) => {
+ const likeArticle = async (req, res) => {
     try {
         const article = await Article.findOne({ slug: req.params.slug });
     if (!article) {
@@ -16,7 +16,7 @@ export const likeArticle = async (req, res) => {
     } 
 };
 
-export const commentOnArticle = async (req, res) => {
+ const commentOnArticle = async (req, res) => {
     try {
         const article = await Article.findOne({ slug: req.params.slug });
         if (!article) {
@@ -34,7 +34,7 @@ export const commentOnArticle = async (req, res) => {
     } 
 };
 
-export const replyToComment = async (req, res) => {
+ const replyToComment = async (req, res) => {
     try {
         const article = await Article.findOne({ slug: req.params.slug });
         if (!article) {
@@ -57,7 +57,7 @@ export const replyToComment = async (req, res) => {
     } 
 };
 
-export const searchArticles = async (req, res) => {
+ const searchArticles = async (req, res) => {
     // const query = req.query.query ? req.query.query.toLowerCase() : ''; // Ensure the query is lowercase
     // console.log('Search query:', query); // Debug: Check the query value
 
@@ -90,7 +90,7 @@ export const searchArticles = async (req, res) => {
 };
 
 
-export const renderArticles = async (req, res) => {
+ const renderArticles = async (req, res) => {
     const articles = await Article.find().sort({ createdAt: 'desc' });
     const isAdmin = req.user && req.user.isAdmin === true;
     const isWriter = req.user && req.user.isWriter === true;
@@ -98,16 +98,16 @@ export const renderArticles = async (req, res) => {
     res.render('articles/index', { articles: articles, isAdmin: isAdmin, isWriter: isWriter }); 
 }
 
-export const renderNewArticle = async (req, res) => { 
+ const renderNewArticle = async (req, res) => { 
     res.render('articles/new', {article: new Article()});
 };
 
-export const renderEditArticle = async (req, res) => {
+ const renderEditArticle = async (req, res) => {
     const article = await Article.findById(req.params.id);
     res.render('articles/edit', {article: article});
 };
 
-export const renderShowArticle = async (req, res) => {
+ const renderShowArticle = async (req, res) => {
     const article = await Article.findOne({ slug: req.params.slug });
     if (article == null) res.redirect('/articles');
     const isAdmin = req.user && req.user.isAdmin === true;
@@ -116,17 +116,17 @@ export const renderShowArticle = async (req, res) => {
 }
  
 
-export const createArticle = async (req, res,next) => {
+ const createArticle = async (req, res,next) => {
     req.article = new Article();
     next();  
 }
 
-export const updateArticle = async (req, res, next) => {
+ const updateArticle = async (req, res, next) => {
     req.article = await Article.findById(req.params.id);
     next(); 
 }
 
-export const saveArticleAndRedirect = path => {
+ const saveArticleAndRedirect = path => {
     return async (req, res) => {
         let article = req.article;
         article.title = req.body.title;
@@ -143,12 +143,12 @@ export const saveArticleAndRedirect = path => {
     }
 }
 
-export const deleteArticle = async (req, res) => {
+ const deleteArticle = async (req, res) => {
     await Article.findByIdAndDelete(req.params.id);
     res.redirect('/articles'); 
 }
 
-export const publishArticle = async (req, res) => {
+ const publishArticle = async (req, res) => {
     try {        
         
         const article = await Article.findById(req.params.id);
@@ -168,7 +168,7 @@ export const publishArticle = async (req, res) => {
     }
 }
 
-export const unpublishArticle = async (req, res) => {
+ const unpublishArticle = async (req, res) => {
     try {
         const article = await Article.findById(req.params.id);
         if (!article) {
@@ -185,6 +185,21 @@ export const unpublishArticle = async (req, res) => {
     }
 }
 
-
+module.exports = {
+    likeArticle,
+    commentOnArticle,
+    replyToComment,
+    searchArticles,
+    renderArticles,
+    renderNewArticle,
+    renderEditArticle,
+    renderShowArticle,
+    createArticle,
+    updateArticle,
+    saveArticleAndRedirect,
+    deleteArticle,
+    publishArticle,
+    unpublishArticle
+};
  
  

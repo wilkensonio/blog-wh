@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 
 const subscribeSchema = new mongoose.Schema({
@@ -30,4 +30,4 @@ const subscribeSchema = new mongoose.Schema({
 });
 
 const Subscribe = mongoose.model('Subscribe', subscribeSchema);
-export default Subscribe;
+module.exports = Subscribe;

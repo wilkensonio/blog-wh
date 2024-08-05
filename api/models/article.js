@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
-import {marked} from "marked";
-import slugify from "slugify";
-import createDOMPurify from "dompurify";
-import { JSDOM } from "jsdom"; 
+const mongoose = require("mongoose");
+const {marked} = require("marked");
+const slugify = require("slugify");
+const createDOMPurify = require("dompurify");
+const { JSDOM } = require("jsdom"); 
 
 
 
@@ -103,4 +103,4 @@ articleSchema.pre('validate', function(next) {
 });
 
 const Article = mongoose.model('Article', articleSchema);
-export default Article;
+module.exports = Article;

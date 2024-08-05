@@ -7,10 +7,10 @@
  * @returns {Error} The customized error object.
  */
 
-export const errorHandler = (statusCode,  message) => { 
+const errorHandler = (statusCode,  message) => { 
     const error = new Error(message); 
     error.statusCode = statusCode;
     return error;
 }
-
+module.exports = errorHandler;
  

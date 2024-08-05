@@ -1,6 +1,6 @@
-import express from 'express';
+const  express = require('express');
 
-import { 
+const { 
     renderArticles,
     renderNewArticle,
     renderEditArticle,
@@ -15,9 +15,8 @@ import {
     searchArticles,
     publishArticle,
     unpublishArticle
-} 
-from '../controllers/post.controller.js'; 
-import { isAuthenticated } from '../middelware/auth.js';
+} = require('../controllers/post.controller.js'); 
+const { isAuthenticated } = require('../middelware/auth.js');
 
 const router = express.Router();
 router.use(isAuthenticated);
@@ -39,4 +38,4 @@ router.post('/:slug/comment', commentOnArticle);
 router.post('/:slug/comment/:commentdId/reply', replyToComment);
 
 
-export default router;
+module.exports =  router;

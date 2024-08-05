@@ -1,14 +1,14 @@
  
-import Subscriber from '../models/subscribe.js'; 
-import { v4 as uuidv4 } from 'uuid'; 
+const Subscriber = require('../models/subscribe.js'); 
+const { v4: uuidv4 } = require('uuid'); 
 
-export const renderSubscribePage = (req, res) => {
+const renderSubscribePage = (req, res) => {
     const isAdmin = req.user && req.user.isAdmin === true;
     const isWriter = req.user && req.user.isWriter === true;
     res.render('subscribe/index', { isAdmin, isWriter });
 };
 
-export const subscribe = async (req, res) => {
+const subscribe = async (req, res) => {
 
     try {
         const email = req.body.email.trim().toLowerCase();
@@ -42,6 +42,8 @@ export const subscribe = async (req, res) => {
             return res.status(500).json({ message: error.message });
     }
 }
+
+module.exports = {subscribe, renderSubscribePage};
 
  
  

@@ -1,6 +1,6 @@
-import express from 'express';
-import {subscribe, renderSubscribePage} from '../controllers/subscribe.controller.js';
-import { isAuthenticated } from '../middelware/auth.js';
+const express = require('express');
+const {subscribe, renderSubscribePage} = require('../controllers/subscribe.controller.js');
+const { isAuthenticated } = require('../middelware/auth.js');
 
 const router = express.Router();
 router.use(isAuthenticated);
@@ -8,4 +8,4 @@ router.use(isAuthenticated);
 router.post('/', subscribe);
 router.get('/', renderSubscribePage);
  
-export default router;
+module.exports = router;

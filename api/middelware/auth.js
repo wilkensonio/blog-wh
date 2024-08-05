@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 
-export const isAuthenticated = (req, res, next) => {
+const isAuthenticated = (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) {
         res.locals.isAdmin = false;
@@ -32,7 +32,7 @@ export const isAuthenticated = (req, res, next) => {
 }
 
 
-export const isAdminOrWriter = (req, res, next) => {
+const isAdminOrWriter = (req, res, next) => {
     if (!req.user) {
         return res.redirect('/admin/login');
     }
@@ -74,3 +74,5 @@ export const isAdminOrWriter = (req, res, next) => {
 
     next();  // Call the next middleware
 }
+
+module.exports = { isAuthenticated, isAdminOrWriter };

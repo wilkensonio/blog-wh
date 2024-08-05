@@ -1,12 +1,12 @@
-import dotenv from "dotenv";
-import User from "../models/user.js";
-import bcryptjs from "bcryptjs";
-import { errorHandler } from "../utils/error.js";
-import jwt from "jsonwebtoken";
+const dotenv = require("dotenv");
+const User = require("../models/user.js");
+const bcryptjs = require("bcryptjs");
+const { errorHandler } = require("../utils/error.js");
+const jwt = require("jsonwebtoken");
 
 dotenv.config(); 
  
-export const signup = async (req, res, next) => {
+const signup = async (req, res, next) => {
     const {name, email, password, confirm_password} = req.body;
     
     if (!name||!email || !password) {
@@ -46,7 +46,7 @@ export const signup = async (req, res, next) => {
  * @param {Object} res - The response object.
  * @param {Function} next - The next middleware function in the stack.
  */
-export const signin = async (req, res, next) => {
+const signin = async (req, res, next) => {
     const { email, password } = req.body;
     if (!email || !password) {
         return next(errorHandler(400, "All fields are required."));
@@ -81,13 +81,13 @@ export const signin = async (req, res, next) => {
     }
 }
 
-export const logout = (req, res) => {
+const logout = (req, res) => {
     res.clearCookie('access_token');
     res.redirect('/admin/login');
 }
 
 
-export const resetPassword =   (req, res, next) => {
+const resetPassword =   (req, res, next) => {
     const { email } = req.body;
     if (!email) {
         return next(errorHandler(400, "Email is required."));
@@ -95,3 +95,5 @@ export const resetPassword =   (req, res, next) => {
     // send email with reset link
     res.redirect('/admin/login');
 }
+
+module.exports = { signup, signin, logout, resetPassword };
