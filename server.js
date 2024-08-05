@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const articleRoutes = require('./routes/article.route'); 
-const subscribeRoutes = require('./routes/subscribe.route'); 
-const adminRoutes = require('./routes/admin.route');
+const articleRoutes = require('./api/routes/article.route'); 
+const subscribeRoutes = require('./api/routes/subscribe.route'); 
+const adminRoutes = require('./api/routes/admin.route');
 const methodOverride = require('method-override'); 
 const path = require('path');
 const cookieParser = require('cookie-parser'); 
@@ -16,14 +16,13 @@ mongoose.connect(process.env.MONGO).then(() => console.log('Connected to MongoDB
 
 // const __dirname = path.resolve();
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, 'api/public'))); 
 
 app.use(methodOverride('_method')); 
 
 app.set('views', [
-    path.join(__dirname, '../client/views'),
-    path.join(__dirname, '../client/admin')
+    path.join(__dirname, 'client/views'),
+    path.join(__dirname, 'client/admin')
 ]);  
 
 app.set('view engine', 'ejs');
@@ -33,7 +32,9 @@ app.use('/articles', articleRoutes);
 app.use('/subscribe', subscribeRoutes);
 app.use('/home', subscribeRoutes);
 app.use('/admin', adminRoutes);
- 
+
+app.use(express.static(path.join(__dirname, '/client/build')));
+
 app.get('*', (req, res) => {
     res.render('articles/index');
 });

@@ -9,7 +9,7 @@
     "sass": "sass --watch styles/main.scss styles/main.css",
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "build": "npm install"
+    "build": "npm install && npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
