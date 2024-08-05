@@ -8,7 +8,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser'; 
 import dotenv  from 'dotenv';
-import { use } from 'marked';
 dotenv.config();
 
 const app = express(); 
@@ -16,9 +15,13 @@ app.use(cookieParser());
 mongoose.connect(process.env.MONGO).then(() => console.log('Connected to MongoDB'));
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.resolve();
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/client/build')));
+
+ 
+
 app.use(methodOverride('_method')); 
 
 app.set('views', [
@@ -35,6 +38,9 @@ app.use('/subscribe', subscribeRoutes);
 app.use('/home', subscribeRoutes);
 app.use('/admin', adminRoutes);
  
+app.get('*', (req, res) => {
+    res.render('articles/index');
+});
  
 
 app.listen(8000, () => {

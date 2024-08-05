@@ -6,7 +6,8 @@
   "scripts": {
     "sass": "sass --watch styles/main.scss styles/main.css",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "node ../build.js"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "slugify": "^1.6.6"
   },
   "devDependencies": {
+    "cpx": "^1.5.0",
     "nodemon": "^3.1.4"
   }
 }
