@@ -36,7 +36,7 @@ app.use('/admin', adminRoutes);
 app.use(express.static(path.join(__dirname, '/client/build')));
 
 app.get('*', (req, res) => {
-    res.render(path.join(__dirname, 'client', 'build', 'articles/index'));
+    res.render('index');
 });
  
 app.listen(8000, () => {
