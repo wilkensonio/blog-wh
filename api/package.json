@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "engines": {
-    "node": ">=15.20.1"
+    "node": "20.14.0"
   },
   "scripts": {
     "sass": "sass --watch styles/main.scss styles/main.css",
