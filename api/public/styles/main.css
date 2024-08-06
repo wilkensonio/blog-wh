@@ -5,7 +5,7 @@
   box-sizing: border-box; 
 }
 body {
-  background-color: #1a202c; 
+  background-color: #1a212d; 
 }
 body .btn-bg-dark {
   background-color: #2d3748;
@@ -117,3 +117,62 @@ pre code.language-mermaid {
     background: initial;  
 }
 
+/* katex  */
+span .katex-display .katex .katex-html{
+  display: block;
+  margin: 1rem 1rem;
+  text-align: left;
+}
+
+/* mainNav */
+#mainNav {
+  background-color: #1a212d !important;
+  color: #f7fafc;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.989);
+}
+
+.navbar-toggler-icon { 
+  background-color: #f7fafc;
+}
+/* hamburger btn */
+/* .custom-toggler {
+  border: 1px solid white; 
+  background: transparent; 
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 40px;
+  height: 30px;
+} */
+
+.custom-toggler .toggler-icon { 
+  width: 25px;
+  height: 3px;
+  background-color: rgb(213, 204, 204) !important; /* White lines */
+  display: block;
+  margin: 4px 0;
+  transition: all 0.3s;
+}
+ 
+ 
+.custom-toggler:hover .toggler-icon {
+  background-color: #f8f9fa; /* Lighter white on hover */
+}
+
+/* Change lines to cross when toggled */
+.custom-toggler.collapsed .toggler-icon:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.custom-toggler.collapsed .toggler-icon:nth-child(2) {
+  opacity: 0;
+}
+
+.custom-toggler.collapsed .toggler-icon:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}

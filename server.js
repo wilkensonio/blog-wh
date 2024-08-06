@@ -28,16 +28,16 @@ app.set('views', [
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/articles', articleRoutes);
+app.use('/posts', articleRoutes);
 app.use('/subscribe', subscribeRoutes);
-app.use('/home', subscribeRoutes);
+app.use('/', subscribeRoutes);
 app.use('/admin', adminRoutes);
 
 app.use(express.static(path.join(__dirname, '/client/build')));
 
-// app.get('*', (req, res) => {
-//     res.render('client/views/articles/index');
-// });
+app.get('*', (req, res) => {
+    res.send('Wrong URL');
+});
  
 app.listen(8000, () => {
     console.log('Server is running on port 8000'); 

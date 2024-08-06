@@ -10,7 +10,7 @@ const Article = require('../models/article.js');
     }
     article.likes++;
     await article.save();
-    res.redirect(`/articles/${article.slug}`);
+    res.redirect(`/posts/${article.slug}`);
     } catch (error) {
         res.status(500).send('Internal server error');
     } 
@@ -51,44 +51,11 @@ const Article = require('../models/article.js');
             content: req.body.content
         });
         await article.save();
-        res.redirect(`/articles/${article.slug}`);
+        res.redirect(`/posts/${article.slug}`);
     } catch (error) {
         res.status(500).send('Internal server error');
     } 
-};
-
- const searchArticles = async (req, res) => {
-    // const query = req.query.query ? req.query.query.toLowerCase() : ''; // Ensure the query is lowercase
-    // console.log('Search query:', query); // Debug: Check the query value
-
-    try {
-        const articles = await Article.find(); // Fetch articles from the database
-        console.log('Fetched articles:', articles); // Debug: Check fetched articles
-
-        // Filter articles based on the search query
-        const filteredArticles = articles.filter(article => {
-            if (!article) return false; // Ensure article is not null
-            return (
-                (article.title && article.title.toLowerCase().includes(query)) ||
-                (article.description && article.description.toLowerCase().includes(query)) ||
-                (article.markdown && article.markdown.toLowerCase().includes(query)) ||
-                (article.sanitizedHtml && article.sanitizedHtml.toLowerCase().includes(query))
-            );
-        });
-
- 
-
-        const noMatch = filteredArticles.length === 0; 
-        const isAdmin = req.user && req.user.isAdmin === true;
-        const isWriter = req.user && req.user.isWriter === true;
-
-        res.render('articles/index', { articles: filteredArticles, isAdmin: isAdmin, isWriter: isWriter, noMatch: noMatch });
-    } catch (error) {
-        console.error('Search error:', error); // Log error details for debugging
-        res.status(500).send('Internal server error');
-    }
-};
-
+}; 
 
  const renderArticles = async (req, res) => {
     const articles = await Article.find().sort({ createdAt: 'desc' });
@@ -135,9 +102,9 @@ const Article = require('../models/article.js');
         article.published = false;
         try {
             article = await article.save();
-            res.redirect(`/articles/${article.slug}`);
+            res.redirect(`/posts/${article.slug}`);
         } catch (e) {
-            res.render(`articles/${path}`, { article: article });
+            res.render(`posts/${path}`, { article: article });
             console.log(e);
         }
     }
@@ -145,7 +112,7 @@ const Article = require('../models/article.js');
 
  const deleteArticle = async (req, res) => {
     await Article.findByIdAndDelete(req.params.id);
-    res.redirect('/articles'); 
+    res.redirect('/posts'); 
 }
 
  const publishArticle = async (req, res) => {
@@ -153,7 +120,7 @@ const Article = require('../models/article.js');
         
         const article = await Article.findById(req.params.id);
         if (!article) {
-            console.log('Article not found');
+            console.log('Post not found');
             return;
             // return res.status(404).send('Article not found');
         }
@@ -161,7 +128,7 @@ const Article = require('../models/article.js');
         article.published = true; 
         await article.save();
         
-        res.redirect(`/articles`);
+        res.redirect(`/posts`);
     } catch (error) {
         console.error('Error publishing article:', error);
         res.status(500).send('Error publishing article');
@@ -178,7 +145,7 @@ const Article = require('../models/article.js');
         }
         article.published = false;
         await article.save();
-        res.redirect(`/articles`);
+        res.redirect(`/posts`);
     } catch (error) {
         console.error('Error unpublishing article:', error);
         res.status(500).send('Error unpublishing article');
@@ -189,7 +156,6 @@ module.exports = {
     likeArticle,
     commentOnArticle,
     replyToComment,
-    searchArticles,
     renderArticles,
     renderNewArticle,
     renderEditArticle,

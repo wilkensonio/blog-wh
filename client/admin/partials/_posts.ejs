@@ -19,7 +19,7 @@
     <div class="container">
         <div class="pt-5">
             <!-- <h1 class="text-4xl text-center text-white">Blog</h1> -->
-            <a class="btn btn-bg-dark" href="/articles/new">New articles</a>
+            <a class="btn btn-bg-dark" href="/posts/new">New posts</a>
         </div>
         <div>
             <div class="row">
@@ -39,10 +39,10 @@
                             </div>
                             <div class="d-flex">
                                 <div class="btn-mr-4 btn-read-more">
-                                    <a href="/articles/<%= article.slug %>" class="btn btn-primary">Read more</a>
+                                    <a href="/posts/<%= article.slug %>" class="btn btn-primary">Read more</a>
                                 </div>
                                 <div>
-                                    <form action="/articles/<%= article.id %>?_method=DELETE" method="POST">
+                                    <form action="/posts/<%= article.id %>?_method=DELETE" method="POST">
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </div>

@@ -25,7 +25,6 @@ router.get('/', renderArticles);
 router.get('/new', renderNewArticle);
 router.get('/edit/:id', renderEditArticle);
 router.get('/:slug', renderShowArticle);
-router.get('/search', searchArticles);
 router.post('/', createArticle, saveArticleAndRedirect('new'));
 router.put('/:id', updateArticle, saveArticleAndRedirect('edit'));
 router.put('/:id/publish', publishArticle);
