@@ -16,13 +16,13 @@ mongoose.connect(process.env.MONGO).then(() => console.log('Connected to MongoDB
 
 // const __dirname = path.resolve();
 
-app.use(express.static(path.join(__dirname, 'api/public'))); 
+app.use(express.static(path.join(__dirname, './api/public'))); 
 
 app.use(methodOverride('_method')); 
 
 app.set('views', [
-    path.join(__dirname, 'client/views'),
-    path.join(__dirname, 'client/admin')
+    path.join(__dirname, './client/views'),
+    path.join(__dirname, './client/admin')
 ]);  
 
 app.set('view engine', 'ejs');
@@ -35,10 +35,10 @@ app.use('/admin', adminRoutes);
 
 app.use(express.static(path.join(__dirname, '/client/build')));
 
-app.get('*', (req, res) => {
-    res.render('index');
-});
+// app.get('*', (req, res) => {
+//     res.render('client/views/articles/index');
+// });
  
 app.listen(8000, () => {
-    console.log('Server is running on port 8000'); //on http://localhost:8000'
+    console.log('Server is running on port 8000'); 
 });
