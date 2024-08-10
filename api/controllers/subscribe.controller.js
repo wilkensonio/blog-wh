@@ -20,24 +20,25 @@ const subscribe = async (req, res) => {
 
         let subscriber = await Subscriber.findOne({ deviceId});
         if (subscriber)
-            return res.redirect('/articles');
+            return res.redirect('/posts');
         
         subscriber = await Subscriber.findOne({email}); 
+        // send email to the subscriber
         
         if (subscriber)
-            return res.redirect('/articles');
+            return res.redirect('/posts');
         
         const subscriberToken = uuidv4(); 
         subscriber = new Subscriber({ email, verificationToken: subscriberToken, deviceId });
         await subscriber.save(); 
 
         res.cookie('deviceId', deviceId, { httpsOnly: true, });
-        return res.redirect('/articles');
+        return res.redirect('/posts');
              
         
     } catch (error) {
         if (error.code === 11000)  
-            return res.redirect('/articles');
+            return res.redirect('/posts');
         else
             return res.status(500).json({ message: error.message });
     }
