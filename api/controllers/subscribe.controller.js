@@ -1,4 +1,4 @@
- 
+const sendEmail = require('../utils/mailer.js');
 const Subscriber = require('../models/subscribe.js'); 
 const { v4: uuidv4 } = require('uuid'); 
 
@@ -22,15 +22,18 @@ const subscribe = async (req, res) => {
         if (subscriber)
             return res.redirect('/posts');
         
-        subscriber = await Subscriber.findOne({email}); 
-        // send email to the subscriber
-        
-        if (subscriber)
+        subscriber = await Subscriber.findOne({email});  
+        if (subscriber) 
             return res.redirect('/posts');
         
         const subscriberToken = uuidv4(); 
         subscriber = new Subscriber({ email, verificationToken: subscriberToken, deviceId });
         await subscriber.save(); 
+
+        const subject = "Welcome to our blog!";
+        const text = "Thank you for subscribing to our blog. Please click the link below to verify your email address.";
+        const verificationLink = `${process.env.BASE_URL}/subscribe/verify/${subscriberToken}`;
+        await sendEmail(email, subject, `${text} ${verificationLink}`);
 
         res.cookie('deviceId', deviceId, { httpsOnly: true, });
         return res.redirect('/posts');
@@ -39,8 +42,10 @@ const subscribe = async (req, res) => {
     } catch (error) {
         if (error.code === 11000)  
             return res.redirect('/posts');
-        else
+        else{
+            res.redirect('/posts');
             return res.status(500).json({ message: error.message });
+        }
     }
 }
 

@@ -21,7 +21,10 @@ const subscribeSchema = new mongoose.Schema({
         required: true, 
         unique: true 
     },
-
+    verrified: {
+        type: Boolean,
+        default: false
+    },
     createdAt: {
         type: Date,
         default: new Date()
