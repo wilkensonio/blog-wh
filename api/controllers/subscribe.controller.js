@@ -43,7 +43,7 @@ const subscribe = async (req, res) => {
         if (error.code === 11000)  
             return res.redirect('/posts');
         else{
-            res.redirect('/posts');
+          res.redirect('/posts');
             return res.status(500).json({ message: error.message });
         }
     }

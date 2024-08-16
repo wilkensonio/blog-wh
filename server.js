@@ -28,10 +28,16 @@ app.set('views', [
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
+app.get('/resume', (req, res) => {
+    res.render('resume/index');
+});
+
 app.use('/posts', articleRoutes);
 app.use('/subscribe', subscribeRoutes);
 app.use('/', subscribeRoutes);
 app.use('/admin', adminRoutes);
+
+
 
 app.use(express.static(path.join(__dirname, '/client/build')));
 
