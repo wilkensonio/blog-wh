@@ -29,7 +29,9 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
 app.get('/resume', (req, res) => {
-    res.render('resume/index');
+    const isAdmin = req.user && req.user.isAdmin === true;
+    const isWriter = req.user && req.user.isWriter === true; 
+    res.render('resume/index', { isAdmin: isAdmin, isWriter: isWriter, resume: true });
 });
 
 app.use('/posts', articleRoutes);

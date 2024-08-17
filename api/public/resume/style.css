@@ -530,4 +530,17 @@ h3 {
   color: #181e28;
 }
 
+.bg-orange {
+  color: #ffffff;
+}
+
+.bg-orange {
+  background-color: #ffb300;
+  color: #181e28;
+}
+
+.resume-link:hover {
+  color: orange !important;
+}
+
 /*# sourceMappingURL=style.css.map */

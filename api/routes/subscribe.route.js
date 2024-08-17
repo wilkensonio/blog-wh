@@ -7,6 +7,11 @@ const router = express.Router();
 router.use(isAuthenticated);
 
 router.post('/', subscribe);
-router.get('/', renderSubscribePage);
+
+router.get('/', (req, res) => {
+    res.redirect('/posts');
+});
+
+router.get('/', renderSubscribePage) ;
  
 module.exports = router;

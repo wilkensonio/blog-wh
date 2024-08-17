@@ -473,3 +473,13 @@ h3 {
   background-color: #fdd835;
   color: #181e28;
 }
+.bg-orange{
+  color: $white;
+}
+.bg-orange{
+  background-color: #ffb300;
+  color: #181e28;
+}
+.resume-link:hover {
+  color: orange !important;  
+}

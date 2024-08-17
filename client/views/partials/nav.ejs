@@ -1,25 +1,27 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">Kadeeno.tech</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top mb-5" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand text-white" href="/">Kadeeno.tech</a>
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="toggler-icon bg-white"></span>
+            <span class="toggler-icon"></span>
+            <span class="toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0 ">
+                <li class="nav-item"><a class="nav-link text-white resume-link" href="/resume">About</a></li>
+                <li class="nav-item"><a class="nav-link text-white resume-link" href="/posts">Algorithms</a></li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link text-white resume-link" aria-current="page" href="/blogs">Blog</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
+                <% if (resume) { %>
+                    <li class="nav-item">
+                        <a class="nav-link active bg-orange" onclick="printResume()">Print resume</a>
+                    </li>
+                    <% } %>
             </ul>
         </div>
     </div>
 </nav>
+<hr>

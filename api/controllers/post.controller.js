@@ -61,29 +61,30 @@ const Article = require('../models/article.js');
     const articles = await Article.find().sort({ createdAt: 'desc' });
     const isAdmin = req.user && req.user.isAdmin === true;
     const isWriter = req.user && req.user.isWriter === true;
-
-    res.render('articles/index', { articles: articles, isAdmin: isAdmin, isWriter: isWriter }); 
+    const resume = req.user && req.user.resume === true; 
+    res.render('articles/index', { articles: articles, isAdmin: isAdmin, isWriter: isWriter, resume: resume}); 
 }
 
- const renderNewArticle = async (req, res) => { 
+const renderNewArticle = async (req, res) => { 
     res.render('articles/new', {article: new Article()});
 };
 
- const renderEditArticle = async (req, res) => {
+const renderEditArticle = async (req, res) => {
     const article = await Article.findById(req.params.id);
-    res.render('articles/edit', {article: article});
+    const resume = req.user && req.user.resume === true; 
+    res.render('articles/edit', {article: article, resume: resume});
 };
 
- const renderShowArticle = async (req, res) => {
+const renderShowArticle = async (req, res) => {
     const article = await Article.findOne({ slug: req.params.slug });
     if (article == null) res.redirect('/articles');
     const isAdmin = req.user && req.user.isAdmin === true;
     const isWriter = req.user && req.user.isWriter === true;
-    res.render('articles/show', { article: article, isAdmin: isAdmin, isWriter: isWriter });   
-}
- 
+    const resume = req.user && req.user.resume === true; 
+    res.render('articles/show', { article: article, isAdmin: isAdmin, isWriter: isWriter, resume: resume });   
+} 
 
- const createArticle = async (req, res,next) => {
+const createArticle = async (req, res,next) => {
     req.article = new Article();
     next();  
 }
@@ -165,7 +166,8 @@ module.exports = {
     saveArticleAndRedirect,
     deleteArticle,
     publishArticle,
-    unpublishArticle
+    unpublishArticle,
+    // renderShowResume
 };
  
  
