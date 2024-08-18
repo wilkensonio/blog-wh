@@ -7,6 +7,7 @@ const isAuthenticated = (req, res, next) => {
         res.locals.isWriter = false;
         res.locals.isAuthenticated = false;
         res.locals.name = null;
+        res.locals.resume = false;
         return next();
     }
     try {
@@ -14,18 +15,21 @@ const isAuthenticated = (req, res, next) => {
             if (err) {
                 res.locals.isAdmin = false;
                 res.locals.isWriter = false;
+                res.locals.resume = false; 
                 res.locals.name = null;
                 return next()
             }
             req.user = decoded;
             res.locals.isAuthenticated = true;
             res.locals.name = decoded.name || null;
+            res.locals.resume = false; 
             return next();
         });
     } catch (error) {
         res.locals.isAuthenticated = false;
         res.locals.isAdmin = false;
         res.locals.isWriter = false;
+        res.locals.resume = false; 
         res.locals.name = null;
         return next();
     } 

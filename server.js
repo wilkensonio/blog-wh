@@ -28,10 +28,18 @@ app.set('views', [
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
+app.get('/resume', (req, res) => {
+    const isAdmin = req.user && req.user.isAdmin === true;
+    const isWriter = req.user && req.user.isWriter === true; 
+    res.render('resume/index', { isAdmin: isAdmin, isWriter: isWriter, resume: true });
+});
+
 app.use('/posts', articleRoutes);
 app.use('/subscribe', subscribeRoutes);
 app.use('/', subscribeRoutes);
 app.use('/admin', adminRoutes);
+
+
 
 app.use(express.static(path.join(__dirname, '/client/build')));
 

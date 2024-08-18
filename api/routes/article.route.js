@@ -12,9 +12,8 @@ const {
     likeArticle,
     commentOnArticle,
     replyToComment,
-    searchArticles,
     publishArticle,
-    unpublishArticle
+    unpublishArticle,
 } = require('../controllers/post.controller.js'); 
 const { isAuthenticated } = require('../middelware/auth.js');
 

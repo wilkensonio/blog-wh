@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Kadeeno.tech</title>
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="./styles/bootstrap-icon/bootstrap-icon.css">
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="./styles/simple-light-box/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="./styles/bootstrap/bootstrap.min.css">
+    <link href="./css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+
+<body id="subscribe">
+    <!-- Navigation-->
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand text-white" href="/">Kadeeno.tech</a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="toggler-icon bg-white"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/posts">Posts</a></li>
+                    <% if (isWriter || isAdmin) { %>
+                        <li class="nav-item"><a class="nav-link" href="/admin">Dashboard</a></li>
+                        <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 h-100">
+            <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-8 align-self-end">
+                    <h1 class="text-white font-weight-bold">Explore the Latest in AI Algorithms and Tech</h1>
+                    <hr class="divider" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 mb-5">Stay updated with cutting-edge advancements in AI algorithms, emerging
+                        technologies, and the tech landscape. Subscribe for insights, tutorials, and more!</p>
+                    <form action="/subscribe" method="POST">
+                        <div class="d-block">
+                            <input class="form-control" type="email" name="email" placeholder="Enter your email"
+                                aria-label="Enter your email..." aria-describedby="button-submit" required />
+                            <button class="btn btn-primary mt-2 " id="button-submit" type="submit">Subscribe!</button>
+                        </div>
+                    </form>
+                    <div class="mt-0 d-flex align-items-center justify-content-center">
+                        <hr class="divider divider-or  flex-grow-1" />
+                        <span class="text-white mx-2">OR</span>
+                        <hr class="divider divider-or flex-grow-1" />
+                    </div>
+                    <a href="/posts" class="cursor-pointer">Continue without subscribing</a>
+                </div>
+            </div>
+    </header>
+    <!-- About-->
+    <section class="page-section bg-primary" id="about">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="text-white mt-0">Welcome to Your Go-To Source for AI and Tech Insights!</h2>
+                    <hr class="divider divider-light" />
+                    <p class="text-white mb-4">Dive into the world of artificial intelligence, cutting-edge
+                        algorithms, and emerging technologies. Our blog provides in-depth articles, tutorials, and
+                        analysis to keep you informed and inspired. Whether you're a tech enthusiast or a professional
+                        in the field, our content is designed to help you stay ahead of the curve.
+                    </p>
+                    <a class="btn btn-light btn-xl" href="#subscribe">Subscribe!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer-->
+    <footer class="bg-light py-5">
+        <div class="container px-4 px-lg-5">
+            <div class="small text-center text-muted">Copyright &copy; <%= new Date().getFullYear() %>, All rights
+                    reserved.
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/bootstrapls"></script>
+    <!-- SimpleLightbox plugin JS-->
+    <script src="/js/simpleLightbox.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+    <script src="/js/proper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>
