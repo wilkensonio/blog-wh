@@ -7,8 +7,9 @@
 // Scripts
 // 
 
+console.log('DOM fully loaded and parsed');
 window.addEventListener('DOMContentLoaded', event => {
-
+    console.log('DOM fully loaded and parsed');
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
@@ -57,3 +58,4 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
