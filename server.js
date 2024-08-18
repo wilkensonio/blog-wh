@@ -34,7 +34,7 @@ app.get('/resume', (req, res) => {
     res.render('resume/index', { isAdmin: isAdmin, isWriter: isWriter, resume: true });
 });
 
-app.use('/posts', articleRoutes);
+app.use('/posts', articleRoutes); 
 app.use('/subscribe', subscribeRoutes);
 app.use('/', subscribeRoutes);
 app.use('/admin', adminRoutes);

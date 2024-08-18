@@ -179,4 +179,12 @@ span .katex-display .katex .katex-html{
 .resume-link:hover {
   color: orange !important;  
 }
+.btn-primary{
+  background-color: #f4623a;
+  border-color: #f4623a;
+}
+.btn-primary:hover{
+  background-color: #f37350;
+  border-color: #f4623a;
+}
 

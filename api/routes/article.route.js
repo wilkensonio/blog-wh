@@ -8,19 +8,21 @@ const {
     createArticle,
     updateArticle,
     saveArticleAndRedirect,
-    deleteArticle,
-    likeArticle,
-    commentOnArticle,
-    replyToComment,
+    deleteArticle, 
     publishArticle,
     unpublishArticle,
 } = require('../controllers/post.controller.js'); 
 const { isAuthenticated } = require('../middelware/auth.js');
+const { render } = require('ejs');
 
 const router = express.Router();
 router.use(isAuthenticated);
 
-router.get('/', renderArticles);   
+// router.get('/', renderArticles);  
+router.get('/', (req, res) =>  renderArticles(req, res));
+router.get('/algorithms', (req, res) =>  renderArticles(req, res, 'algorithm-post'));
+router.get('/blog', (req, res) =>  renderArticles(req, res, 'blog-post'));
+
 router.get('/new', renderNewArticle);
 router.get('/edit/:id', renderEditArticle);
 router.get('/:slug', renderShowArticle);
@@ -28,12 +30,8 @@ router.post('/', createArticle, saveArticleAndRedirect('new'));
 router.put('/:id', updateArticle, saveArticleAndRedirect('edit'));
 router.put('/:id/publish', publishArticle);
 router.put('/:id/unpublish', unpublishArticle);
-router.delete('/:id', deleteArticle);
-
-// like and comment routes
-router.post('/:slug/like', likeArticle);
-router.post('/:slug/comment', commentOnArticle);
-router.post('/:slug/comment/:commentdId/reply', replyToComment);
+router.delete('/:id', deleteArticle); 
+ 
 
 
 module.exports =  router;
