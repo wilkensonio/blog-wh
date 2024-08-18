@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 const articleRoutes = require('./api/routes/article.route'); 
 const subscribeRoutes = require('./api/routes/subscribe.route'); 
 const adminRoutes = require('./api/routes/admin.route');
+const resumeRoutes = require('./api/routes/resume.route');
 const methodOverride = require('method-override'); 
 const path = require('path');
 const cookieParser = require('cookie-parser'); 
+
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -38,6 +40,8 @@ app.use('/posts', articleRoutes);
 app.use('/subscribe', subscribeRoutes);
 app.use('/', subscribeRoutes);
 app.use('/admin', adminRoutes);
+
+app.use('/resume', resumeRoutes);
 
 
 
