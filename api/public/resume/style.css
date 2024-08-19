@@ -587,6 +587,51 @@ h3 {
     line-height: 40px;
   }
 }
+@media screen and (max-width: 375px) {
+  .resume {
+    flex-direction: column;
+    width: 100%;
+  }
+  .resume .base {
+    width: 100%;
+  }
+  .resume .func {
+    width: 100%;
+  }
+  .resume .func .work,
+  .resume .func .edu {
+    width: 100%;
+    margin: 0 0 15px 0;
+  }
+  .resume .func .work {
+    margin-right: 0;
+  }
+  .resume .func .skills-prog,
+  .resume .func .skills-soft,
+  .resume .func .interests {
+    width: 100%;
+  }
+  .resume .func .skills-soft {
+    margin: 15px 0 0;
+  }
+  .resume .func .interests {
+    margin: 15px 0 0;
+  }
+  .resume .func .interests-items {
+    flex-wrap: wrap;
+  }
+  .resume .func .interests-items div {
+    width: 45%;
+    height: 45%;
+    margin-bottom: 15px;
+  }
+  .resume .func .interests-items div i {
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+}
 .btn-outline-primary:hover {
   color: #fff;
   background-color: #f4623a !important;
