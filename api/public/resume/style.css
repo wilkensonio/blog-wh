@@ -643,12 +643,12 @@ h3 {
 }
 
 #circular-progress-list li {
-  flex: 1 1 48%; /* 48% width allows for space between items */
+  flex: 1 1 25%; /* default to 4 items per row */
   box-sizing: border-box;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   #circular-progress-list li {
     flex: 1 1 48%; /* Two items per row on smaller screens */
   }
@@ -662,7 +662,7 @@ h3 {
   display: block;
   text-align: center;
   margin-top: 5px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .btn-outline-primary:hover {
