@@ -30,7 +30,7 @@
     <header hidden>
         <%- include('../partials/nav') %>
     </header>
-    <div class="container text-white">
+    <div class="container text-white max-screen">
         <div class="mt-4">
             <a href="/posts" class="btn btn-custom-dark sticky-top">
                 <span>
@@ -106,6 +106,9 @@
                 </div>
 
             </div>
+        </div>
+        <div>
+            <%- include('partials/footer') %>
         </div>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
