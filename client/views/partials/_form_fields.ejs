@@ -3,12 +3,15 @@
     <select name="category" id="category" required>
         <option type="text" class="form-control" disabled selected>
             Choose a category</option>
-        <option type="text" class="form-control" value="algorithm-post">
-            Algorithm-post</option>
-        <option type=" text" class="form-control" value="blog-post">
+        <option class="form-control" value="algorithm-post" <%=article.category==='algorithm-post' ? 'selected' : '' %>
+            >Algorithm-post
+        </option>
+        <option type=" text" class="form-control" value="blog-post" <%=article.category==='blog-post' ?'selected' : ''
+            %>>
             Blog-post</option>
     </select>
 </div>
+<hr>
 <div class=" form-group">
     <label for="title"><span class="text-white">Title</span></label>
     <input type="text" class="form-control" id="title" placeholder="Article's title" name="title"
