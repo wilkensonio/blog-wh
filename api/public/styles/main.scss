@@ -34,42 +34,22 @@ body{
         }
     } 
     .btn-primary{
+        color: #ffffff;
         background-color: #f4623a;
-    }
-
+    } 
+   
     .btn-outline-primary {
-        color: #007bff; /* Primary color for text */
-        border: 2px solid #007bff; /* Border color */
-        background-color: transparent; /* Transparent background */
-        padding: 10px 20px; /* Padding for button */
-        font-size: 16px; /* Font size */
-        border-radius: 4px; /* Rounded corners */
-        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition on hover */
-        text-transform: uppercase; /* Uppercase text */
-        cursor: pointer; /* Pointer cursor on hover */
+        color: #f4623a;  
+        border: 2px solid #f4623a;  
+        background-color: transparent;   
+        border-radius: 4px;  
+        transition: background-color 0.3s ease, color 0.3s ease;  
+        text-transform: uppercase;  
+        cursor: pointer;  
     }
     
     .btn-outline-primary:hover {
-        color: #fff; /* White text on hover */
-        background-color: #f4623a; /* Primary color background on hover */
-    }
-    .btn-outline-primary {
-        color: #007bff; /* Primary color for text */
-        border: 2px solid #007bff; /* Border color */
-        background-color: transparent; /* Transparent background */
-        padding: 10px 20px; /* Padding for button */
-        font-size: 16px; /* Font size */
-        border-radius: 4px; /* Rounded corners */
-        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition on hover */
-        text-transform: uppercase; /* Uppercase text */
-        cursor: pointer; /* Pointer cursor on hover */
-    }
-    
-    .btn-outline-primary:hover {
-        color: #fff; /* White text on hover */
-        background-color: #007bff; /* Primary color background on hover */
-    }
-    
-    
-
+        color: #fff;  
+        background-color: #f4623a;  
+    } 
 }
