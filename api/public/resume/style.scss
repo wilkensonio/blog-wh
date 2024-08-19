@@ -529,7 +529,7 @@ h3 {
   }
 }
 /* resize the resume/about page on mobile*/
- @media screen and (max-width: 375px) {
+ @media screen and (max-width: 600px) {
   .resume {
     flex-direction: column;
     width: 100%;
@@ -589,7 +589,7 @@ h3 {
   margin-bottom: 10px;  
 }
 
-@media (max-width: 375px) {  
+@media (max-width: 600px) {  
   #circular-progress-list li {
       flex: 1 1 48%; /* Two items per row on smaller screens */
   }
