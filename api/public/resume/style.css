@@ -587,5 +587,19 @@ h3 {
     line-height: 40px;
   }
 }
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #f4623a !important;
+}
+
+.btn-outline-primary {
+  color: #f4623a !important;
+  border: 2px solid #f4623a !important;
+  background-color: transparent;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=style.css.map */
