@@ -483,6 +483,7 @@ h3 {
 .resume-link:hover {
   color: orange !important;  
 }
+
 @media screen and (max-width: 960px) {
   .resume {
     width: 100%;
@@ -527,7 +528,7 @@ h3 {
     line-height: 40px;
   }
 }
-
+/* resize the resume/about page on mobile*/
  @media screen and (max-width: 375px) {
   .resume {
     flex-direction: column;
@@ -550,7 +551,7 @@ h3 {
   .resume .func .skills-prog,
   .resume .func .skills-soft,
   .resume .func .interests {
-    width: 100%;
+    width: 100%; 
   }
   .resume .func .skills-soft {
     margin: 15px 0 0;
@@ -573,7 +574,40 @@ h3 {
     line-height: 40px;
   }
 }
- 
+/* only show 2 software skills per row on small screen*/
+#circular-progress-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#circular-progress-list li {
+  flex: 1 1 48%; /* 48% width allows for space between items */
+  box-sizing: border-box;
+  margin-bottom: 10px;  
+}
+
+@media (max-width: 375px) {  
+  #circular-progress-list li {
+      flex: 1 1 48%; /* Two items per row on smaller screens */
+  }
+}
+
+#circular-progress-list svg {
+  width: 100%;
+  height: auto;
+}
+
+#circular-progress-list span, #circular-progress-list small {
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 14px
+}
+
+//  custom button
 .btn-outline-primary:hover {
   color: #fff; 
   background-color: #f4623a !important;  
