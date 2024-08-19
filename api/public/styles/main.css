@@ -1,11 +1,23 @@
-
+ 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box; 
 }
-body {
+html, body {
   background-color: #1a212d; 
+  height: 100%;
+  margin: 0;
+}
+footer {
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+.max-screen {
+  min-height: calc(100vh - 56px); /* Adjust 56px to match the height of your header and footer combined */
+  box-sizing: border-box;
+}
+.max-screen{
+  flex:1;
 }
 body .btn-bg-dark {
   background-color: #2d3748;

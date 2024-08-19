@@ -10,6 +10,10 @@ body{
     background-color: $bg-dark;
     color: $--white;
 
+    .max-screen{
+        flex: 1;
+    }
+
     .btn-bg-dark {
         background-color:$btn-bg-color;
         color: $--white; 
