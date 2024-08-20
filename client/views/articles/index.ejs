@@ -9,7 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/bootstrap/bootstrap.min.css">
 
-    <link href="./css/styles.css" rel="stylesheet" />
+    <!-- <link href="/css/styles.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
 
@@ -36,9 +36,9 @@
             Explore Our Latest Posts
         </h1>
         <div class="filter">
-            <a class="btn btn-sm btn-outline-primary" href="/posts" outlined>All posts</a>
-            <a class="btn btn-sm btn-outline-primary" href="/posts/algorithms">Algorithms</a>
-            <a class="btn btn-sm btn-outline-primary" href="/posts/blog">Blog</a>
+            <a class="btn btn-sm btn-outline" href="/posts" outlined>All posts</a>
+            <a class="btn btn-sm btn-outline" href="/posts/algorithms">Algorithms</a>
+            <a class="btn btn-sm btn-outline" href="/posts/blog">Blog</a>
         </div>
         <div>
             <% if (isAdmin || isWriter) { %>
@@ -100,7 +100,7 @@
                                             <div class="d-flex">
                                                 <div class="btn-mr-4 btn-read-more">
                                                     <a href="/posts/<%= article.slug %>"
-                                                        class="btn  btn-outline-primary btn-sm">
+                                                        class="btn  btn-outline btn-sm">
                                                         <% if (isAdmin || isWriter) { %>
                                                             View
                                                             <% } else { %>Read more<% } %>
