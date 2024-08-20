@@ -51,7 +51,7 @@ app.use('/resume', resumeRoutes);
 app.use(express.static(path.join(__dirname, '/client/build')));
 
 app.get('*', (req, res) => {
-    res.send('Wrong URL');
+    res.render('404');
 }); 
 
  
