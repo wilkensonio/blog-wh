@@ -36,6 +36,14 @@
             border: none;
 
         }
+
+        .readmore {
+            color: #f4623a;
+        }
+
+        .readmore:hover {
+            color: #f1b6a5;
+        }
     </style>
 </head>
 
@@ -89,7 +97,18 @@
                     </li> -->
                 </ul>
             </div>
-            <a class="btn btn-sm btn-outline  me-2" href="/posts/blog">Blog</a>
+            <!-- <a class="btn btn-sm btn-outline  me-2" href="/posts/blog"></a> -->
+            <div class="dropdown  me-2">
+                <button class="btn btn-sm btn-outline dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Blog
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item text-orange" href="/posts/blog">All posts</a></li>
+                    <li><a class="dropdown-item text-orange" href="/posts/blog/ai">AI</a></li>
+                    <li><a class="dropdown-item text-orange" href="/posts/blog/others">Others</a></li>
+                </ul>
+            </div>
         </div>
         <div>
             <div class="mt-5">
@@ -159,10 +178,9 @@
                                             </div>
                                             <div class="d-flex">
                                                 <div class="btn-mr-4 btn-read-more">
-                                                    <a href="/posts/<%= article.slug %>"
-                                                        class="btn  btn-outline btn-sm">
+                                                    <a href="/posts/<%= article.slug %>" class="readmore">
                                                         <% if (isAdmin || isWriter) { %>
-                                                            View
+                                                            <span class="btn btn-sm btn-outline">View</span>
                                                             <% } else { %>Read more<% } %>
                                                     </a>
                                                 </div>

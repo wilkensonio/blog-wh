@@ -1,3 +1,8 @@
+<style>
+    .text-muted {
+        color: #6c757d;
+    }
+</style>
 <div class="d-flex">
     <div class="form-group">
         <label for="category"><span class="text-white">Category</span></label>
@@ -19,17 +24,28 @@
         <select name="type" id="type" required>
             <option type="text" class="form-control" disabled selected>
                 Choose a type</option>
-            <!-- start of menu  -->
+            <!-- start of menu for blog post -->
+            <option type=" text" class="form-control" value="ai" <%=article.type==='ai' ?'selected' : '' %>>
+                <span class="text-muted">BP-</span>AI
+            </option>
+            <option type=" text" class="form-control" value="ai" <%=article.type==='ai' ?'selected' : '' %>>
+                <span class="text-muted">BP-</span>Others
+            </option>
+
+            <hr>
+
+            <!-- start of menu for algorithms post  -->
             <option class="form-control" value="array" <%=article.type==='array' ? 'selected' : '' %>
-                >Arrays
+                ><span class="text-muted">AP-</span>Arrays
             </option>
             <option type=" text" class="form-control" value="sorting" <%=article.type==='sorting' ?'selected' : '' %>>
-                Sorting
+                <span class=" fw-bold">AP-</span>Sorting
             </option>
             <option type=" text" class="form-control" value="searching" <%=article.type==='searching' ?'selected' : ''
                 %>>
-                Searching
+                <span class="text-muted">AP-</span>Searching
             </option>
+
 
         </select>
     </div>
