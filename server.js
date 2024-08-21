@@ -7,12 +7,27 @@ const resumeRoutes = require('./api/routes/resume.route');
 const methodOverride = require('method-override'); 
 const path = require('path');
 const cookieParser = require('cookie-parser'); 
+const compression = require('compression');
 
 const dotenv = require('dotenv');
 
 dotenv.config();
 
 const app = express(); 
+
+app.use(compression(
+    {
+        level: 6,
+        threshold: 100 * 1000, // any files over 100kb will be compressed
+        filter: (req, res) => {
+            if (req.headers['x-no-compression']) {
+                return false;
+            }
+            return compression.filter(req, res);
+        }
+    }
+));
+
 app.use(cookieParser());
 mongoose.connect(process.env.MONGO)
 .then(() => console.log('Connected to MongoDB'))

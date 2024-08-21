@@ -17,7 +17,12 @@ const renderArticles = async (req, res, category, type) => {
     
     let message = null;
     if (articles.length === 0 || publish===false) {
-        message = `No ${type} algorithm found, Please check back later.`;
+        if (category === 'algorithm-post')
+            message = `No ${type} algorithm found, Please check back later.`;
+        else if (category === 'blog-post')
+            message = `No ${type} blog found, Please check back later.`;
+        else 
+            message = 'No articles found, Please check back later';
     }  
 
     res.render('articles/index', { 

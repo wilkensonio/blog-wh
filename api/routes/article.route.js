@@ -25,6 +25,8 @@ router.get('/algorithms/sorting', (req, res) =>  renderArticles(req, res, 'algor
 router.get('/algorithms/searching', (req, res) =>  renderArticles(req, res, 'algorithm-post', 'searching'));
 
 router.get('/blog', (req, res) =>  renderArticles(req, res, 'blog-post'));
+router.get('/blog/ai', (req, res) =>  renderArticles(req, res, 'blog-post' , 'ai'));
+router.get('/blog/others', (req, res) =>  renderArticles(req, res, 'blog-post', 'other'));
 
 router.get('/new', renderNewArticle);
 router.get('/edit/:id', renderEditArticle);
