@@ -2,10 +2,10 @@ const sendEmail = require('../utils/mailer.js');
 const Subscriber = require('../models/subscribe.js'); 
 const { v4: uuidv4 } = require('uuid'); 
 
-const renderSubscribePage = (req, res) => {
+const renderHomePage = (req, res) => {
     const isAdmin = req.user && req.user.isAdmin === true;
     const isWriter = req.user && req.user.isWriter === true;
-    res.render('subscribe/index', { isAdmin, isWriter });
+    res.render('home/index', { isAdmin, isWriter });
 };
 
 const subscribe = async (req, res) => {
@@ -49,7 +49,7 @@ const subscribe = async (req, res) => {
     }
 }
 
-module.exports = {subscribe, renderSubscribePage};
+module.exports = {subscribe, renderHomePage};
 
  
  

@@ -13,7 +13,6 @@ const {
     unpublishArticle,
 } = require('../controllers/post.controller.js'); 
 const { isAuthenticated } = require('../middelware/auth.js');
-const { render } = require('ejs');
 
 const router = express.Router();
 router.use(isAuthenticated);

@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const articleRoutes = require('./api/routes/article.route'); 
-const subscribeRoutes = require('./api/routes/subscribe.route'); 
+const homeRoutes = require('./api/routes/home.route'); 
 const adminRoutes = require('./api/routes/admin.route');
 const resumeRoutes = require('./api/routes/resume.route');
 const methodOverride = require('method-override'); 
@@ -33,18 +33,19 @@ app.set('views', [
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/resume', (req, res) => {
+app.use('/', homeRoutes);
+// resume
+app.get('/about', (req, res) => {
     const isAdmin = req.user && req.user.isAdmin === true;
     const isWriter = req.user && req.user.isWriter === true; 
     res.render('resume/index', { isAdmin: isAdmin, isWriter: isWriter, resume: true });
 });
 
 app.use('/posts', articleRoutes); 
-app.use('/subscribe', subscribeRoutes);
-app.use('/', subscribeRoutes);
 app.use('/admin', adminRoutes);
 
-app.use('/resume', resumeRoutes);
+// resume
+app.use('/about', resumeRoutes);
 
 
 
