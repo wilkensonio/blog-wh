@@ -20,6 +20,10 @@ router.use(isAuthenticated);
 // router.get('/', renderArticles);  
 router.get('/', (req, res) =>  renderArticles(req, res));
 router.get('/algorithms', (req, res) =>  renderArticles(req, res, 'algorithm-post'));
+router.get('/algorithms/arrays', (req, res) =>  renderArticles(req, res,  'algorithm-post', 'array'));
+router.get('/algorithms/sorting', (req, res) =>  renderArticles(req, res, 'algorithm-post', 'sorting'));
+router.get('/algorithms/searching', (req, res) =>  renderArticles(req, res, 'algorithm-post', 'searching'));
+
 router.get('/blog', (req, res) =>  renderArticles(req, res, 'blog-post'));
 
 router.get('/new', renderNewArticle);

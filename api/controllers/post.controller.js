@@ -1,17 +1,32 @@
  
 const Article = require('../models/article.js'); 
 
-const renderArticles = async (req, res, category) => {
+const renderArticles = async (req, res, category, type) => {
     let query = {};
     if (category) 
         query.category = category; 
+    if (type)
+        query.type = type;
 
-    const articles = await Article.find(query).sort({ createdAt: 'desc' }); 
+    const articles = await Article.find(query).sort({ createdAt: 'desc' });  
 
     const isAdmin = req.user && req.user.isAdmin === true;
     const isWriter = req.user && req.user.isWriter === true;
-    const resume = req.user && req.user.resume === true; 
-    res.render('articles/index', { articles: articles, isAdmin: isAdmin, isWriter: isWriter, resume: resume}); 
+    const resume = req.user && req.user.resume === true;  
+    const publish = articles.some(article => article.published); 
+    
+    let message = null;
+    if (articles.length === 0 || publish===false) {
+        message = `No ${type} algorithm found, Please check back later.`;
+    }  
+
+    res.render('articles/index', { 
+        articles: articles, 
+        isAdmin: isAdmin, 
+        isWriter: isWriter, 
+        resume: resume,
+        message: message
+    }); 
 }
 
 const renderNewArticle = async (req, res) => { 
@@ -47,6 +62,7 @@ const saveArticleAndRedirect = path => {
     return async (req, res) => {
         let article = req.article;
         article.category = req.body.category;
+        article.type = req.body.type;
         article.title = req.body.title;
         article.description = req.body.description;
         article.markdown = req.body.markdown;

@@ -1,16 +1,40 @@
-<div class="form-group">
-    <label for="category"><span class="text-white">Category</span></label>
-    <select name="category" id="category" required>
-        <option type="text" class="form-control" disabled selected>
-            Choose a category</option>
-        <option class="form-control" value="algorithm-post" <%=article.category==='algorithm-post' ? 'selected' : '' %>
-            >Algorithm-post
-        </option>
-        <option type=" text" class="form-control" value="blog-post" <%=article.category==='blog-post' ?'selected' : ''
-            %>>
-            Blog-post</option>
-    </select>
+<div class="d-flex">
+    <div class="form-group">
+        <label for="category"><span class="text-white">Category</span></label>
+        <select class="me-2" name="category" id="category" required>
+            <option type="text" class="form-control" disabled selected>
+                Choose a category</option>
+            <option class="form-control" value="algorithm-post" <%=article.category==='algorithm-post' ? 'selected' : ''
+                %>
+                >Algorithm-post
+            </option>
+            <option type=" text" class="form-control" value="blog-post" <%=article.category==='blog-post' ?'selected'
+                : '' %>>
+                Blog-post</option>
+        </select>
+    </div>
+    <div class="form-group">
+
+        <label for="type"><span class="text-white">Type</span></label>
+        <select name="type" id="type" required>
+            <option type="text" class="form-control" disabled selected>
+                Choose a type</option>
+            <!-- start of menu  -->
+            <option class="form-control" value="array" <%=article.type==='array' ? 'selected' : '' %>
+                >Arrays
+            </option>
+            <option type=" text" class="form-control" value="sorting" <%=article.type==='sorting' ?'selected' : '' %>>
+                Sorting
+            </option>
+            <option type=" text" class="form-control" value="searching" <%=article.type==='searching' ?'selected' : ''
+                %>>
+                Searching
+            </option>
+
+        </select>
+    </div>
 </div>
+
 <hr>
 <div class=" form-group">
     <label for="title"><span class="text-white">Title</span></label>
