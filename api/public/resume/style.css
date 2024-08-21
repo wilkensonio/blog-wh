@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
+ 
 * {
   outline: none;
 }
@@ -9,24 +9,9 @@
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
-}
+} 
 
-html,
-body {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background: #1a212d;
-  cursor: default;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-}
-
-a {
+.resume-a {
   text-decoration: none;
   color: #ffffff;
   display: block;
@@ -50,7 +35,7 @@ h3 {
 }
 
 .resume {
-  width: 960px;
+  /* width: 960px; */
   background: #151a23;
   color: #ffffff;
   margin: 20px auto;
@@ -145,11 +130,11 @@ h3 {
   line-height: 24px;
 }
 
-.resume .base .contact div a:hover {
+.resume .base .contact div  .resume-a:hover {
   color: #fdd835;
 }
 
-.resume .base .contact div a:hover span::after {
+.resume .base .contact div  .resume-a:hover span::after {
   width: 100%;
 }
 
@@ -187,18 +172,18 @@ h3 {
   vertical-align: middle;
 }
 
-.resume .base .follow .box a {
+.resume .base .follow .box  .resume-a {
   display: inline-block;
   vertical-align: text-bottom;
 }
 
-.resume .base .follow .box a:hover i {
+.resume .base .follow .box  .resume-a:hover i {
   background: #fdd835;
   border-radius: 5px;
   transform: rotate(45deg) scale(0.8);
 }
 
-.resume .base .follow .box a:hover i::before {
+.resume .base .follow .box  .resume-a:hover i::before {
   transform: rotate(-45deg) scale(1.5);
 }
 
@@ -270,21 +255,21 @@ h3 {
   opacity: 0.7;
 }
 
-.resume .func .work ul li,
-.resume .func .edu ul li {
+.resume .func .work ul .resume-li,
+.resume .func .edu ul .resume-li {
   position: relative;
   margin-left: 15px;
   padding-left: 25px;
   padding-bottom: 15px;
 }
 
-.resume .func .work ul li:hover::before,
-.resume .func .edu ul li:hover::before {
+.resume .func .work ul .resume-li:hover::before,
+.resume .func .edu ul .resume-li:hover::before {
   animation: circle 1.2s infinite;
 }
 
-.resume .func .work ul li:hover span,
-.resume .func .edu ul li:hover span {
+.resume .func .work ul .resume-li:hover span,
+.resume .func .edu ul .resume-li:hover span {
   color: #fdd835;
 }
 
@@ -296,34 +281,34 @@ h3 {
     box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
   }
 }
-.resume .func .work ul li:first-of-type::before,
-.resume .func .edu ul li:first-of-type::before {
+.resume .func .work ul .resume-li:first-of-type::before,
+.resume .func .edu ul .resume-li:first-of-type::before {
   width: 10px;
   height: 10px;
   left: 1px;
 }
 
-.resume .func .work ul li:last-of-type,
-.resume .func .edu ul li:last-of-type {
+.resume .func .work ul .resume-li:last-of-type,
+.resume .func .edu ul .resume-li:last-of-type {
   padding-bottom: 3px;
 }
 
-.resume .func .work ul li:last-of-type::after,
-.resume .func .edu ul li:last-of-type::after {
+.resume .func .work ul .resume-li:last-of-type::after,
+.resume .func .edu ul .resume-li:last-of-type::after {
   border-radius: 1.5px;
 }
 
-.resume .func .work ul li::before,
-.resume .func .work ul li::after,
-.resume .func .edu ul li::before,
-.resume .func .edu ul li::after {
+.resume .func .work ul .resume-li::before,
+.resume .func .work ul .resume-li::after,
+.resume .func .edu ul .resume-li::before,
+.resume .func .edu ul .resume-li::after {
   content: "";
   display: block;
   position: absolute;
 }
 
-.resume .func .work ul li::before,
-.resume .func .edu ul li::before {
+.resume .func .work ul .resume-li::before,
+.resume .func .edu ul .resume-li::before {
   width: 7px;
   height: 7px;
   border: 3px solid #ffffff;
@@ -333,8 +318,8 @@ h3 {
   z-index: 1;
 }
 
-.resume .func .work ul li::after,
-.resume .func .edu ul li::after {
+.resume .func .work ul .resume-li::after,
+.resume .func .edu ul .resume-li::after {
   width: 3px;
   height: 100%;
   background: #ffffff;
@@ -342,8 +327,8 @@ h3 {
   top: 0;
 }
 
-.resume .func .work ul li span,
-.resume .func .edu ul li span {
+.resume .func .work ul .resume-li span,
+.resume .func .edu ul .resume-li span {
   transition-duration: 0.3s;
 }
 
@@ -370,28 +355,28 @@ h3 {
   margin-left: 15px;
 }
 
-.resume .func .skills-prog ul li {
+.resume .func .skills-prog ul .resume-li {
   margin-bottom: 8px;
   display: flex;
   align-items: center;
   transition-duration: 0.3s;
 }
 
-.resume .func .skills-prog ul li:hover {
+.resume .func .skills-prog ul .resume-li:hover {
   color: #fdd835;
 }
 
-.resume .func .skills-prog ul li:hover .skills-bar .bar {
+.resume .func .skills-prog ul .resume-li:hover .skills-bar .bar {
   background: #fdd835;
   box-shadow: 0 0 0 1px #fdd835;
 }
 
-.resume .func .skills-prog ul li span {
+.resume .func .skills-prog ul .resume-li span {
   display: block;
   width: 120px;
 }
 
-.resume .func .skills-prog ul li .skills-bar {
+.resume .func .skills-prog ul .resume-li .skills-bar {
   background: #ffffff;
   height: 2px;
   width: calc(100% - 120px);
@@ -399,7 +384,7 @@ h3 {
   border-radius: 2px;
 }
 
-.resume .func .skills-prog ul li .skills-bar .bar {
+.resume .func .skills-prog ul .resume-li .skills-bar .bar {
   position: absolute;
   top: -1px;
   height: 4px;
@@ -421,39 +406,39 @@ h3 {
   text-align: center;
 }
 
-.resume .func .skills-soft ul li {
+.resume .func .skills-soft ul .resume-li {
   position: relative;
 }
 
-.resume .func .skills-soft ul li:hover svg .cbar {
+.resume .func .skills-soft ul .resume-li:hover svg .cbar {
   stroke: #fdd835;
   stroke-width: 4px;
 }
 
-.resume .func .skills-soft ul li:hover span,
-.resume .func .skills-soft ul li:hover small {
+.resume .func .skills-soft ul .resume-li:hover span,
+.resume .func .skills-soft ul .resume-li:hover small {
   transform: scale(1.2);
 }
 
-.resume .func .skills-soft ul li svg {
+.resume .func .skills-soft ul .resume-li svg {
   width: 95%;
   fill: transparent;
   transform: rotate(-90deg);
 }
 
-.resume .func .skills-soft ul li svg circle {
+.resume .func .skills-soft ul .resume-li svg circle {
   stroke-width: 1px;
   stroke: #ffffff;
 }
 
-.resume .func .skills-soft ul li svg .cbar {
+.resume .func .skills-soft ul .resume-li svg .cbar {
   stroke-width: 3px;
   stroke: #ffb300;
   stroke-linecap: round;
 }
 
-.resume .func .skills-soft ul li span,
-.resume .func .skills-soft ul li small {
+.resume .func .skills-soft ul .resume-li span,
+.resume .func .skills-soft ul .resume-li small {
   position: absolute;
   display: block;
   width: 100%;
@@ -461,7 +446,7 @@ h3 {
   transition-duration: 0.3s;
 }
 
-.resume .func .skills-soft ul li span {
+.resume .func .skills-soft ul .resume-li span {
   top: 40%;
 }
 
@@ -642,14 +627,14 @@ h3 {
   justify-content: space-between;
 }
 
-#circular-progress-list li {
+#circular-progress-list .resume-li {
   flex: 1 1 25%; /* default to 4 items per row */
   box-sizing: border-box;
   margin-bottom: 12px;
 }
 
 @media (max-width: 500px) {
-  #circular-progress-list li {
+  #circular-progress-list .resume-li {
     flex: 1 1 48%; /* Two items per row on smaller screens */
   }
 }
@@ -679,5 +664,3 @@ h3 {
   text-transform: uppercase;
   cursor: pointer;
 }
-
-/*# sourceMappingURL=style.css.map */

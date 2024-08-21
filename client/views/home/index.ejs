@@ -24,22 +24,24 @@
     <link rel="stylesheet" href="/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
 </head>
 
-<body>
+<body style="background-color: #1a212d;">
     <!-- Navigation-->
     <header class="sticky-top">
         <%- include('../partials/nav') %>
     </header>
 
-    <div class="max-screen">
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 h-100">
-                <%- include('about') %>
-                    <div class="mt-5">
-                        <%- include('../partials/footer') %>
-                    </div>
-        </header>
+
+    <!-- Masthead-->
+
+    <div class=" px-4 px-lg-5 masthead max-screen">
+        <div>
+            <%- include('about') %>
+        </div>
     </div>
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+
 
 
     <!-- Bootstrap core JS-->

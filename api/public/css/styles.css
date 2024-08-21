@@ -7664,12 +7664,7 @@ textarea.form-control-lg {
 .text-body {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-body-color-rgb), var(--bs-text-opacity)) !important;
-}
-
-.text-muted {
-  --bs-text-opacity: 1;
-  color: #6c757d !important;
-}
+} 
 
 .text-black-50 {
   --bs-text-opacity: 1;
@@ -10427,19 +10422,7 @@ body {
   text-transform: uppercase;
   border: none;
   border-radius: 10rem;
-}
-
-hr.divider {
-  height: 0.2rem;
-  max-width: 3.25rem;
-  margin: 1.5rem auto;
-  background-color: #f4623a;
-  opacity: 1;
-}
-
-hr.divider-light {
-  background-color: #fff;
-}
+} 
 
 #mainNav {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -10504,10 +10487,10 @@ hr.divider-light {
 }
  
 
-header.masthead {
+div.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(26, 32, 44, 0.8) 0%, rgba(26, 32, 44, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(26, 32, 44, 0.8) 0%, rgba(26, 32, 44, 0.8) 10%), url("../assets/img/bg-masthead.jpg");
   /* background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg"); */
   background-position: center;
   background-repeat: no-repeat;
