@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +14,10 @@
     <style>
         body,
         html {
-            height: 100%;
+
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #222222;
         }
 
         .maintenance-container {
@@ -27,17 +25,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100%;
+            height: 100vh;
             text-align: center;
-            background-color: #222222;
             color: #ffffff;
         }
 
         .maintenance-code {
-            font-size: 6rem;
+            font-size: 2rem;
             font-weight: bold;
             color: #f0ad4e;
-            /* Amber color for maintenance */
         }
 
         .maintenance-message {
@@ -60,14 +56,12 @@
         .btn-primary {
             color: #fff;
             background-color: #f0ad4e;
-            /* Amber color */
             border: #f0ad4e;
         }
 
         .btn-primary:hover {
             color: #fff;
             background-color: #ec971f;
-            /* Darker amber for hover */
             border-color: #ec971f;
         }
 
@@ -80,7 +74,7 @@
 
 <body>
     <div class="maintenance-container">
-        <div>
+        <div class="container">
             <div class="maintenance-code">Maintenance</div>
             <div class="maintenance-message">Currently undergoing scheduled maintenance. We’ll be back
                 shortly!</div>
