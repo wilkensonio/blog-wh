@@ -17,9 +17,9 @@ const renderArticles = async (req, res, category, type) => {
     
     let message = null;
     if (articles.length === 0 || publish===false) {
-        if (category === 'algorithm-post' && type )
+        if (category === 'algorithm-post' && type)
             message = `No ${type} algorithms found, Please check back later.`;
-        else if (category === 'blog-post'){
+        else if (category === 'blog-post' && type){
             if (type == 'ai') 
                 type = 'AI';
             else if (type == 'ml')
