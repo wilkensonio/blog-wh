@@ -1,5 +1,7 @@
- 
 const Article = require('../models/article.js'); 
+const axios = require('axios');
+const path = require('path');
+const dotenv = require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });    
 
 const renderArticles = async (req, res, category, type) => {
     let query = {};
@@ -94,7 +96,25 @@ const deleteArticle = async (req, res) => {
     res.redirect('/posts'); 
 }
 
- const publishArticle = async (req, res) => {
+const sendDiscordMessage = async (msg) => {
+    const payload = {
+        content: msg, 
+    };
+    const discordWebhook = process.env.DISCORDWEBHOOK;
+
+    try {
+        const response = await axios.post(discordWebhook, payload, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        console.log('Message sent to Discord:', response.data);
+    } catch (error) {
+        console.error('Error sending message to Discord:', error);
+    }
+};
+
+const publishArticle = async (req, res) => {
     try {        
         
         const article = await Article.findById(req.params.id);
@@ -103,11 +123,16 @@ const deleteArticle = async (req, res) => {
             return;
             // return res.status(404).send('Article not found');
         }
-        
+
         article.published = true; 
+
         await article.save();
-        
-        res.redirect(`/posts`);
+
+        const url = process.env.BASE_URL + '/posts/' + article.slug; 
+        const msg = `New article: \n ${article.title} \n ${article.description} \n read it here\u00A0👉\u00A0${url}`;
+        await sendDiscordMessage(msg, article.slug);
+        res.redirect(`/posts`); 
+
     } catch (error) {
         console.error('Error publishing article:', error);
         res.status(500).send('Error publishing article');
