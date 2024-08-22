@@ -10,10 +10,26 @@ const cookieParser = require('cookie-parser');
 const compression = require('compression');
 
 const dotenv = require('dotenv');
+const { render } = require('ejs');
 
 dotenv.config();
 
 const app = express(); 
+
+app.set('views', [
+    path.join(__dirname, './client/views'),
+    path.join(__dirname, './client/admin')
+]);  
+
+app.set('view engine', 'ejs'); 
+
+app.use((req, res, next) => {
+    if (process.env.MAINTENANCE_MODE === 'true') {
+        res.render('maintenance');
+    } else {
+        next();
+    }
+});
 
 app.use(compression(
     {
@@ -40,12 +56,7 @@ app.use(express.static(path.join(__dirname, './api/public')));
 
 app.use(methodOverride('_method')); 
 
-app.set('views', [
-    path.join(__dirname, './client/views'),
-    path.join(__dirname, './client/admin')
-]);  
 
-app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', homeRoutes);
