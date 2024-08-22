@@ -17,14 +17,14 @@ const renderArticles = async (req, res, category, type) => {
     
     let message = null;
     if (articles.length === 0 || publish===false) {
-        if (category === 'algorithm-post')
-            message = `No ${type} algorithm found, Please check back later.`;
+        if (category === 'algorithm-post' && type )
+            message = `No ${type} algorithms found, Please check back later.`;
         else if (category === 'blog-post'){
             if (type == 'ai') 
                 type = 'AI';
-            if (type == 'ml')
+            else if (type == 'ml')
                 type = 'ML';
-            if (type == 'dl')
+            else if (type == 'dl')
                 type = 'DL';
             message = `No ${type} blog found, Please check back later.`;
         }else 
