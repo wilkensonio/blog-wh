@@ -80,6 +80,8 @@
         ' “The great myth of our times is that technology is communication.” – Libby Larsen',
         '“Any application that can be written in JavaScript, will eventually be written in JavaScript” — Jeff Atwood'
     ];
+    const firstQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.querySelector('.quotes').textContent = firstQuote;
 
     setInterval(() => {
         const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
