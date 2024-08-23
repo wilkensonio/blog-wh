@@ -1,7 +1,7 @@
 const Article = require('../models/article.js'); 
 const axios = require('axios');
 const path = require('path');
-const dotenv = require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });    
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });    
 
 const renderArticles = async (req, res, category, type) => {
     let query = {};
@@ -129,7 +129,7 @@ const publishArticle = async (req, res) => {
         await article.save();
 
         const url = process.env.BASE_URL + '/posts/' + article.slug; 
-        const msg = `New article: \n ${article.title} \n ${article.description} \n read it here\u00A0👉\u00A0${url}`;
+        const msg = `\n# New article\n${article.title}\n${article.description}\nread it here\u00A0👉\u00A0${url}`;
         await sendDiscordMessage(msg, article.slug);
         res.redirect(`/posts`); 
 
