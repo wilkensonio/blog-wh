@@ -28,7 +28,7 @@ const renderArticles = async (req, res, category, type) => {
                 type = 'ML';
             else if (type == 'dl')
                 type = 'DL';
-            message = `No ${type} blog found, Please check back later.`;
+            message = `No ${type} article found, Please check back later.`;
         }else 
             message = 'No articles found, Please check back later';
     }  
