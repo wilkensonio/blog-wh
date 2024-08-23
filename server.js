@@ -17,7 +17,7 @@ dotenv.config();
 const app = express(); 
 
 const cache = apicache.middleware
-app.use(cache('24 hours'));
+app.use(cache('120 minutes'));
 
 app.set('views', [
     path.join(__dirname, './client/views'),
