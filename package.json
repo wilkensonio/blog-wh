@@ -17,6 +17,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "apicache": "^1.6.3",
     "axios": "^1.7.4",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
