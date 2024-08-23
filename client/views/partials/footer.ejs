@@ -80,12 +80,14 @@
         ' “The great myth of our times is that technology is communication.” – Libby Larsen',
         '“Any application that can be written in JavaScript, will eventually be written in JavaScript” — Jeff Atwood'
     ];
-    const firstQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    document.querySelector('.quotes').textContent = firstQuote;
 
-    setInterval(() => {
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        document.querySelector('.quotes').textContent = randomQuote;
-    }, 10000);
+    const today = new Date();
+    const start = new Date(today.getFullYear(), 0, 0);
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor((today - start) / oneDay);
 
+    const quoteIndex = dayOfYear % quotes.length;
+    const dailyQuote = quotes[quoteIndex];
+
+    document.querySelector('.quotes').textContent = dailyQuote;
 </script>
