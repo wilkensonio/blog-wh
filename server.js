@@ -9,8 +9,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser'); 
 const compression = require('compression');
 
-const dotenv = require('dotenv');
-const { render } = require('ejs');
+const dotenv = require('dotenv'); 
 
 dotenv.config();
 
@@ -49,8 +48,7 @@ mongoose.connect(process.env.MONGO)
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => { console.log(err)
 });
-
-// const __dirname = path.resolve();
+ 
 
 app.use(express.static(path.join(__dirname, './api/public'))); 
 

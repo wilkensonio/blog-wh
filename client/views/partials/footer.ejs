@@ -45,7 +45,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h5 class="text-white
-                    mt-0">Welcome to Your Go-To Source for Tech Insights!</h5>
+                    mt-0 quotes"></h5>
                     <hr class="divider divider-light" />
                     <p class="text-white">
                         Know when new articles are published. Join our discord server!
@@ -70,3 +70,20 @@
         </div>
     </div>
 </footer>
+<script>
+    const quotes = [
+        '"One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary man. - Elbert Hubbard"',
+        '“Technology will never replace great teachers, but technology in the hands of great teachers is transformational.” – George Couras',
+        '“Technology alone is not enough.”— Steve Jobs',
+        '“If you think technology can solve your security problems, then you don’t understand the problems, and you don’t understand the technology.”— Bruce Schneier',
+        '“Technology is anything that wasn’t around when you were born.” – Alan Kay',
+        ' “The great myth of our times is that technology is communication.” – Libby Larsen',
+        '“Any application that can be written in JavaScript, will eventually be written in JavaScript” — Jeff Atwood'
+    ];
+
+    setInterval(() => {
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        document.querySelector('.quotes').textContent = randomQuote;
+    }, 10000);
+
+</script>
