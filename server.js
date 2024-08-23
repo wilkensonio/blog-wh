@@ -8,12 +8,16 @@ const methodOverride = require('method-override');
 const path = require('path');
 const cookieParser = require('cookie-parser'); 
 const compression = require('compression');
+const apicache = require('apicache');
 
 const dotenv = require('dotenv'); 
 
 dotenv.config();
 
 const app = express(); 
+
+const cache = apicache.middleware
+app.use(cache('24 hours'));
 
 app.set('views', [
     path.join(__dirname, './client/views'),
