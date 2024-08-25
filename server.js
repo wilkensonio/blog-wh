@@ -7,13 +7,15 @@ const resumeRoutes = require('./api/routes/resume.route');
 const methodOverride = require('method-override'); 
 const path = require('path');
 const cookieParser = require('cookie-parser'); 
-const compression = require('compression'); 
+const compression = require('compression');  
+const apicache = require('apicache');
 
 const dotenv = require('dotenv'); 
 
 dotenv.config();
 
 const app = express();  
+const cache = apicache.middleware;
 
 app.set('views', [
     path.join(__dirname, './client/views'),
@@ -51,6 +53,7 @@ mongoose.connect(process.env.MONGO)
 
 app.use(express.static(path.join(__dirname, './api/public'))); 
 
+
 app.use(methodOverride('_method')); 
 
 app.use(express.urlencoded({ extended: false }));
@@ -66,7 +69,7 @@ app.get('/about', (req, res) => {
 app.use('/posts', articleRoutes); 
 app.use('/admin', adminRoutes);
 
-// resume
+// resume download
 app.use('/about', resumeRoutes);
 
 app.use(express.static(path.join(__dirname, '/client/build')));
