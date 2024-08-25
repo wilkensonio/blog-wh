@@ -31,13 +31,12 @@ router.get('/algorithms/searching',  (req, res) =>  renderArticles(req, res, 'al
 
 router.get('/blog', (req, res) =>  renderArticles(req, res, 'blog-post'));
 router.get('/blog/ai', (req, res) =>  renderArticles(req, res, 'blog-post' , 'ai'));
-router.get('/blog/others', (req, res) =>  renderArticles(req, res, 'blog-post', 'other'));
-router.get('/:slug',  renderShowArticle); 
-
-router.get('/edit/:id', renderEditArticle);
+router.get('/blog/others', (req, res) =>  renderArticles(req, res, 'blog-post', 'other')); 
 
 router.post('/', createArticle, saveArticleAndRedirect('new'));
 
+router.get('/edit/:id', renderEditArticle);
+router.get('/:slug',  renderShowArticle); 
 router.put('/:id', updateArticle, saveArticleAndRedirect('edit'));
 router.put('/:id/publish', publishArticle);
 router.put('/:id/unpublish', unpublishArticle);
