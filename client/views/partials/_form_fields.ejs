@@ -9,41 +9,61 @@
         <select class="me-2" name="category" id="category" required>
             <option type="text" class="form-control" disabled selected>
                 Choose a category</option>
+            <option type=" text" class="form-control" value="Articles" <%=article.category==='Articles' ?'selected' : ''
+                %>>
+                Articles</option>
             <option class="form-control" value="algorithm-post" <%=article.category==='algorithm-post' ? 'selected' : ''
                 %>
                 >Algorithm-post
             </option>
-            <option type=" text" class="form-control" value="blog-post" <%=article.category==='blog-post' ?'selected'
-                : '' %>>
-                Blog-post</option>
+            <option type=" text" class="form-control" value="ai-post" <%=article.category==='ai-post' ?'selected' : ''
+                %>>
+                AI-post</option>
         </select>
     </div>
     <div class="form-group">
 
         <label for="type"><span class="text-white">Type</span></label>
         <select name="type" id="type" required>
+            <!-- articles -->
             <option type="text" class="form-control" disabled selected>
-                Choose a type</option>
-            <!-- start of menu for blog post -->
-            <option type=" text" class="form-control" value="ai" <%=article.type==='ai' ?'selected' : '' %>>
-                <span class="text-muted">BP-</span>AI
+                Articles</option>
+            <option type="text" class="form-control">
+                Articles</option>
+            <!-- ai -->
+            <option type="text" class="form-control" disabled selected>
+                Artificial Intelligence</option>
+            <!-- start of menu for ai post -->
+            <option type=" text" class="form-control" value="linear-regression" <%=article.type==='linear-regression'
+                ?'selected' : '' %>>
+                Linear Regression
             </option>
-            <option type=" text" class="form-control" value="other" <%=article.type==='other' ?'selected' : '' %>>
-                <span class="text-muted">BP-</span>Others
+            <option type=" text" class="form-control" value="logistic-regression"
+                <%=article.type==='logistic-regression' ?'selected' : '' %>>
+                Logistic Regression
+            </option>
+            <option type=" text" class="form-control" value="random-forests" <%=article.type==='random-forests'
+                ?'selected' : '' %>>
+                random-forests
             </option>
 
             <hr>
 
             <!-- start of menu for algorithms post  -->
-            <option class="form-control" value="array" <%=article.type==='array' ? 'selected' : '' %>
-                ><span class="text-muted">AP-</span>Arrays
+            <option type="text" class="form-control" disabled selected>
+                Algorithm-post</option>
+            <option class="form-control" value="two-pointers" <%=article.type==='two-pointers' ? 'selected' : '' %>>
+                Two Pointers
             </option>
-            <option type=" text" class="form-control" value="sorting" <%=article.type==='sorting' ?'selected' : '' %>>
-                <span class=" fw-bold">AP-</span>Sorting
+            <option type=" text" class="form-control" value="fast-slow-pointers" <%=article.type==='fast-slow-pointers'
+                ?'selected' : '' %>>
+                Fast Slow Pointers
             </option>
-            <option type=" text" class="form-control" value="searching" <%=article.type==='searching' ?'selected' : ''
-                %>>
-                <span class="text-muted">AP-</span>Searching
+            <option type=" text" class="form-control" value="dfs" <%=article.type==='dfs' ?'selected' : '' %>>
+                DFS
+            </option>
+            <option type=" text" class="form-control" value="bfs" <%=article.type==='bfs' ?'selected' : '' %>>
+                BFS
             </option>
 
 
