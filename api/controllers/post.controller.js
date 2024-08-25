@@ -42,7 +42,10 @@ const renderArticles = async (req, res, category, type) => {
     }); 
 }
 
+
+
 const renderNewArticle = async (req, res) => { 
+    console.log('renderNewArticle');
     res.render('articles/new', {article: new Article()});
 };
 
@@ -54,7 +57,10 @@ const renderEditArticle = async (req, res) => {
 
 const renderShowArticle = async (req, res) => {
     const article = await Article.findOne({ slug: req.params.slug });
-    if (article == null) res.redirect('/articles');
+    if (article == null) {
+        res.redirect('/posts');
+        return;
+    };
     const isAdmin = req.user && req.user.isAdmin === true;
     const isWriter = req.user && req.user.isWriter === true;
     const resume = req.user && req.user.resume === true; 
@@ -85,8 +91,7 @@ const saveArticleAndRedirect = path => {
             res.redirect(`/posts/${article.slug}`);
         } catch (e) {
             console.log(e, "Error saving article");
-            res.render(`posts/${path}`, { article: article });
-            
+            res.render(`posts/${path}`, { article: article });            
         }
     }
 }

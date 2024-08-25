@@ -16,25 +16,24 @@ const {
 } = require('../controllers/post.controller.js'); 
 const { isAuthenticated } = require('../middelware/auth.js');
 
-const cache = apicache.middleware;
-const cacheMiddleware = cache('120 minutes'); 
+ 
 
 const router = express.Router();
 router.use(isAuthenticated);
 
- 
-router.get('/', cacheMiddleware,  (req, res) =>  renderArticles(req, res));
-router.get('/algorithms', cacheMiddleware, (req, res) =>  renderArticles(req, res, 'algorithm-post'));
-router.get('/algorithms/arrays', cacheMiddleware, (req, res) =>  renderArticles(req, res,  'algorithm-post', 'array'));
-router.get('/algorithms/sorting', cacheMiddleware,  (req, res) =>  renderArticles(req, res, 'algorithm-post', 'sorting'));
-router.get('/algorithms/searching', cacheMiddleware,  (req, res) =>  renderArticles(req, res, 'algorithm-post', 'searching'));
 
-router.get('/blog', cacheMiddleware, (req, res) =>  renderArticles(req, res, 'blog-post'));
-router.get('/blog/ai', cacheMiddleware, (req, res) =>  renderArticles(req, res, 'blog-post' , 'ai'));
-router.get('/blog/others', cacheMiddleware, (req, res) =>  renderArticles(req, res, 'blog-post', 'other'));
-router.get('/:slug', cacheMiddleware,  renderShowArticle);
-
+router.get('/', (req, res) =>  renderArticles(req, res));
 router.get('/new', renderNewArticle);
+router.get('/algorithms', (req, res) =>  renderArticles(req, res, 'algorithm-post'));
+router.get('/algorithms/arrays', (req, res) =>  renderArticles(req, res,  'algorithm-post', 'array'));
+router.get('/algorithms/sorting',  (req, res) =>  renderArticles(req, res, 'algorithm-post', 'sorting'));
+router.get('/algorithms/searching',  (req, res) =>  renderArticles(req, res, 'algorithm-post', 'searching'));
+
+router.get('/blog', (req, res) =>  renderArticles(req, res, 'blog-post'));
+router.get('/blog/ai', (req, res) =>  renderArticles(req, res, 'blog-post' , 'ai'));
+router.get('/blog/others', (req, res) =>  renderArticles(req, res, 'blog-post', 'other'));
+router.get('/:slug',  renderShowArticle); 
+
 router.get('/edit/:id', renderEditArticle);
 
 router.post('/', createArticle, saveArticleAndRedirect('new'));
