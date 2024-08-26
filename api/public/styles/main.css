@@ -244,21 +244,21 @@ pre:has(code.mermaid) {
 }
  /* table  */
  .table {
-  border: 1px solid white; /* Define border color */
+  border: 1px solid white;  
   /* border-collapse: collapse;  */
   width: 100%;
 }
 
 .table th, .table td {
-  border: 1px solid white; /* Define border color for table cells */
+  border: 1px solid white;  
   padding: 8px;
   text-align: left;
 }
 
 .table th {
-  background-color: hsl(218, 27%, 10%); /* Dark background for header cells */
+  background-color: hsl(218, 27%, 30%); 
 }
 
 .table td {
-  background-color: hsl(218, 27%, 20%); /* Dark background for table cells */
+  background-color: hsl(218, 27%, 20%);  
 }
