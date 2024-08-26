@@ -213,4 +213,31 @@ span .katex-display .katex .katex-html{
   color: #fff;  
   background-color: #f4623a;  
 }
+/* code  */
+.hljs {
+  background-color: hsl(218, 27%, 20%) !important;
+  color: #ffffff !important;
+}
+.hljs-type {
+  
+  color: hsl(219, 100%, 48%) !important;
+}
+.hljs-built_in {
+  color: hsl(219, 100%, 48%) !important;
+}
+.hljs-variable {
+  color: hsl(163, 76%, 50%) !important;
+}
+/* mermaid edgePaths */ 
+pre:has(code.mermaid) { 
+  background-color: hsl(218, 27%, 20%) !important;
+  overflow: auto !important;
+}
+
+.edgePaths path {
+  stroke: #fff !important; 
+}
+.arrowMarkerPath {
+  fill: #fff !important;
+}
  
