@@ -3,7 +3,8 @@ const slugify = require('slugify');
 
 const projects = async (req, res) => { 
     const projects = await Project.find();  
-    res.render('projects/index', {projects }); 
+    const isAdmin = req.user && req.user.isAdmin === true; 
+    res.render('projects/index', {projects, isAdmin, }); 
 }
 
 const formProject = (req, res) => {
@@ -11,9 +12,17 @@ const formProject = (req, res) => {
 } 
 
 const deleteProject = async (req, res) => { 
-    const { id } = req.params;
-    await Project.findByIdAndDelete(id);
-    res.redirect('/projects');
+    try {
+        const { id } = req.params;
+        const imagePath = path.join(__dirname, `../public${project.imageUrl}`);
+        fs.unlinkSync(imagePath); 
+        await Project.findByIdAndDelete(id);
+        res.redirect('/projects');
+    } catch (error) {
+        console.log(error, "Error deleting project");
+        res.status(400).json({error: error.message});
+    }
+    
 }
 
 const createProject = async (req, res) => {

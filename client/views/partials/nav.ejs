@@ -66,6 +66,11 @@
                             <li class="nav-item"><a class="nav-link text-white" href="/admin">Dashboard</a></li>
 
                             <% } %>
+                                <% if (isAdmin) { %>
+                                    <li class="nav-item"><a class="nav-link text-white"
+                                            href="/projects/new">New-project</a></li>
+
+                                    <% } %>
             </ul>
         </div>
     </div>
