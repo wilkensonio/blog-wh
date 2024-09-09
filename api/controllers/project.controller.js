@@ -2,14 +2,19 @@ const Project = require('../models/project.js');
 const slugify = require('slugify');
 
 const projects = async (req, res) => { 
-    const projects = await Project.find(); 
-    console.log(projects);
+    const projects = await Project.find();  
     res.render('projects/index', {projects }); 
 }
 
 const formProject = (req, res) => {
     res.render('projects/new');
 } 
+
+const deleteProject = async (req, res) => { 
+    const { id } = req.params;
+    await Project.findByIdAndDelete(id);
+    res.redirect('/projects');
+}
 
 const createProject = async (req, res) => {
     try {
@@ -40,5 +45,6 @@ const createProject = async (req, res) => {
 module.exports = {
     projects,
     formProject,
-    createProject 
+    createProject,
+    deleteProject
 }

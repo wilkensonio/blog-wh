@@ -194,13 +194,17 @@
                                         data-deployedwith="<%= project.deployedWith %>">
                                         About
                                     </a>
+                                    <form action="/projects/delete/<%= project._id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="btn btn-danger btn-small">
+                                            Del
+                                        </button>
+                                    </form>
                                 </div>
                                 <div class="card-data">
                                     <!-- Project Title -->
                                     <h5 class="card-title">
                                         <%= project.title %>
                                     </h5>
-
                                     <!-- Tech Stack -->
                                     <h6>Tech Used:</h6>
                                     <ul>
