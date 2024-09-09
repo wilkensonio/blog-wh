@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'api/public/projectUploads/'); // Directory to save uploaded files
     },
-    filename: (req, file, cb) => {
+    filename: (req, file, cb) => { 
         const originalName = path.parse(file.originalname).name; 
         const extension = path.extname(file.originalname);
         const newFileName = `${originalName}-${Date.now()}${extension}`
