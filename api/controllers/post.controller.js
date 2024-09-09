@@ -44,8 +44,7 @@ const renderArticles = async (req, res, category, type) => {
 
 
 
-const renderNewArticle = async (req, res) => { 
-    console.log('renderNewArticle');
+const renderNewArticle = async (req, res) => {  
     res.render('articles/new', {article: new Article()});
 };
 

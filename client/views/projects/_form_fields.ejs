@@ -1,0 +1,64 @@
+<style>
+    .text-muted {
+        color: #6c757d;
+    }
+</style>
+
+<!-- Image Upload (accepts only jpeg, jpg, png) -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label for="title" class="form-label text-white">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label for="image" class="form-label text-white">Image</label>
+            <input type="file" class="form-control" id="image" name="image" accept=".jpg,.jpeg,.png" required>
+            <small class="form-text text-muted">Upload only .jpg, .jpeg, .png formats</small>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="mb-3">
+            <label for="techStack" class="form-label text-white">Tech Stack</label>
+            <input type="text" class="form-control" id="techStack" name="techStack"
+                placeholder="e.g. React, Node.js, MongoDB" required>
+            <small class="form-text text-muted">Enter technologies used, separated by commas</small>
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-3">
+            <label for="deployedWith" class="form-label text-white">Deployed With</label>
+            <input type="text" class="form-control" id="deployedWith" name="deployedWith"
+                placeholder="e.g. Heroku, Netlify" required>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label for="github" class="form-label text-white">Code Link (GitHub)</label>
+            <input type="url" class="form-control" id="github" name="codeUrl" placeholder="https://github.com/your-repo"
+                required>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label for="demo" class="form-label text-white">Live Link (Demo)</label>
+            <input type="url" class="form-control" id="demo" name="projectUrl" placeholder="https://your-live-demo.com"
+                required>
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label for="description" class="form-label text-white">Description (Markdown)</label>
+    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+</div>
+
+<!-- Submit Button -->
+<button type="submit" class="btn btn-primary">Submit</button>
