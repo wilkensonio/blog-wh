@@ -5,6 +5,14 @@ const  errorHandler  = require("../utils/error.js");
 const jwt = require("jsonwebtoken");
 
 dotenv.config(); 
+/**
+ * This function handles the user signup process. It creates a new user with the provided
+ * name, email, and password, and saves the user to the database.
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Object} next 
+ * @returns next error
+ */
  
 const signup = async (req, res, next) => {
     const {name, email, password, confirm_password} = req.body;
