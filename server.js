@@ -3,19 +3,29 @@ const mongoose = require('mongoose');
 const articleRoutes = require('./api/routes/article.route'); 
 const homeRoutes = require('./api/routes/home.route'); 
 const adminRoutes = require('./api/routes/admin.route');
-const resumeRoutes = require('./api/routes/resume.route');
+const resumeRoutes = require('./api/routes/resume.route'); 
+const projectsRoutes = require('./api/routes/projects.route'); 
 const methodOverride = require('method-override'); 
 const path = require('path');
 const cookieParser = require('cookie-parser'); 
 const compression = require('compression');  
-const apicache = require('apicache');
+const fs = require('fs');
+ 
 
 const dotenv = require('dotenv'); 
 
 dotenv.config();
 
 const app = express();  
-const cache = apicache.middleware;
+
+// Path to the uploads directory
+const uploadDir = path.join(__dirname, './api/public', 'projectUploads');
+
+// Create the uploads directory if it doesn't exist
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
+
 
 app.set('views', [
     path.join(__dirname, './client/views'),
@@ -51,8 +61,7 @@ mongoose.connect(process.env.MONGO)
 .catch(err => { console.log(err)
 }); 
 
-app.use(express.static(path.join(__dirname, './api/public'))); 
-
+app.use(express.static(path.join(__dirname, './api/public')));  
 
 app.use(methodOverride('_method')); 
 
@@ -65,6 +74,12 @@ app.get('/about', (req, res) => {
     const isWriter = req.user && req.user.isWriter === true; 
     res.render('resume/index', { isAdmin: isAdmin, isWriter: isWriter, resume: true });
 });
+
+app.get('/certs', (req, res) => {
+    res.render('certs/index');
+});
+
+app.use('/projects', projectsRoutes);
 
 app.use('/posts', articleRoutes); 
 app.use('/admin', adminRoutes);
