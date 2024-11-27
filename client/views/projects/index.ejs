@@ -55,15 +55,6 @@
 
         /*allow scroll if info overflow*/
 
-        .card {
-            width: 100%;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-        }
-
         .card-img-top {
             height: 150px;
             object-fit: cover;
@@ -85,12 +76,8 @@
         }
 
         .action-btn {
-            display: flex;
-            justify-content: space-between;
             background-color: #222;
-            /* Same as bg-dark */
             padding: 10px;
-            position: absolute;
             left: 0;
             width: 100%;
             z-index: 1;
@@ -173,53 +160,42 @@
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <!-- Image for the project -->
-                            <img src="<%= project.imageUrl  %>" class="card-img-top" alt="<%= project.title %>">
+                            <img src="<%= project.imageUrl %>" class="card-img-top" alt="<%= project.title %>">
 
                             <div class="card-body bg-dark text-white">
                                 <!-- Action Buttons: Fixed at the bottom -->
-                                <div class="action-btn">
-                                    <a href="<%= project.link %>" class="btn btn-primary btn-small">
-                                        Code
-                                    </a>
-                                    <a href="<%= project.link %>" class="btn btn-primary btn-small">
-                                        Live
-                                    </a>
-
-                                    <!-- Example Trigger Button -->
-                                    <a type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop" data-title="<%= project.title %>"
-                                        data-imageurl="<%= project.imageUrl %>"
-                                        data-description="<%= project.sanitizedHtml %>"
-                                        data-techstack='<%= JSON.stringify(project.techStack) %>'
-                                        data-deployedwith="<%= project.deployedWith %>">
-                                        About
-                                    </a>
-                                    <% if(isAdmin) {%>
-                                        <form action="/projects/delete/<%= project._id %>?_method=DELETE" method="POST">
-                                            <button type="submit" class="btn btn-danger btn-small">
-                                                Del
-                                            </button>
-                                        </form>
-                                        <% } %>
+                                <div class="row">
+                                    <!-- Trigger Button -->
+                                    <div class="col col-12">
+                                        <a type="button" class="btn btn-small btn-primary w-100" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop" data-title="<%= project.title %>"
+                                            data-imageurl="<%= project.imageUrl %>"
+                                            data-description="<%= project.sanitizedHtml %>"
+                                            data-techstack='<%= JSON.stringify(project.techStack) %>'
+                                            data-deployedwith="<%= project.deployedWith %>"
+                                            data-code="<%= project.codeUrl %>" data-project="<%= project.projectUrl %>">
+                                            <i class="fa fa-book text-success"></i> About
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <% if(isAdmin) {%>
+                                            <form action="/projects/delete/<%= project._id %>?_method=DELETE"
+                                                method="POST">
+                                                <button type="submit" class="btn btn-danger btn-small w-100 mt-2">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                            <% } %>
+                                    </div>
                                 </div>
-                                <div class="card-data">
+                                <div class="card-data" hidden>
                                     <!-- Project Title -->
                                     <h5 class="card-title">
                                         <%= project.title %>
                                     </h5>
-                                    <!-- Tech Stack -->
-                                    <h6>Tech Used:</h6>
-                                    <ul>
-                                        <% project.techStack.forEach(tech=> { %>
-                                            <li>
-                                                <%= tech %>
-                                            </li>
-                                            <% }) %>
-                                    </ul>
+                                    <!-- Project Description -->
+                                    <p class="card-text-description">
 
-                                    <!-- Deployment Platform -->
-                                    <p><strong>Deployed with:</strong>
-                                        <%= project.deployedWith %>
                                     </p>
                                 </div>
                             </div>
@@ -238,10 +214,6 @@
                 <% } %>
     </div>
 
-    <!-- modal project: about -->
-
-    <!-- Button trigger modal -->
-
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -254,7 +226,8 @@
                     ...
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                    <div class="col col-12 mb-2 code-btn"></div>
+                    <div class="col col-12 mb-2 project-btn"></div>
                 </div>
             </div>
         </div>
@@ -276,19 +249,39 @@
                 const techStack = JSON.parse(button.getAttribute('data-techstack'));
                 const deployedWith = button.getAttribute('data-deployedwith');
 
+                const codeUrl = button.getAttribute('data-code');
+                const projectUrl = button.getAttribute('data-project');
+
                 // Populate modal with project details
                 const modalTitle = staticBackdropModal.querySelector('.modal-title');
                 const modalBody = staticBackdropModal.querySelector('.modal-body');
+
+                const codeBtn = staticBackdropModal.querySelector('.code-btn');
+                const projectBtn = staticBackdropModal.querySelector('.project-btn');
+
+                codeBtn.innerHTML = `
+                    <a href="${codeUrl}" target="_blank" class="btn btn-primary btn-small w-100">
+                        <i class="fa-brands fa-github text-success"></i> Code
+                    </a>
+                `;
+
+                projectBtn.innerHTML = ` 
+                    <a href="${projectUrl}" target="_blank" class="btn btn-primary btn-small w-100">
+                        <i class="fa fa-link text-success"></i>
+                        Live
+                    </a> 
+                `;
 
                 modalTitle.textContent = title;
                 modalBody.innerHTML = `
                     <img src="${imageUrl}" class="modal-img img-fluid mb-3" alt="" width="100%" height="15px">
                     <p>${description}</p>
                     <h6>Tech Used:</h6>
-                    <ul>${techStack.map(tech => `<li>${tech}</li>`).join('')}</ul>
+                    <ul class="row">${techStack.map(tech => `<li class="col-4">${tech}</li>`).join('')}</ul>
                     <p><strong>Deployed with:</strong> ${deployedWith}</p>
                 `;
             });
+
         });
     </script>
 
