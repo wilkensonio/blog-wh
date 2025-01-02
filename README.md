@@ -1,2 +1,2 @@
-# Blog , notes, AI, Tech
+# showcase all project
 
