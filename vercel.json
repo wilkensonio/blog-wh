@@ -3,7 +3,12 @@
     "builds": [
       {
         "src": "server.js",
-        "use": "@vercel/node"
+        "use": "@vercel/node",
+        "config": {
+            "includeFiles": ["api/**.js"],
+            "maxDuration": 60
+
+        }
       }
     ],
     "routes": [
@@ -11,13 +16,7 @@
         "src": "/(.*)",
         "dest": "server.js"
       }
-    ],
-    
-    "functions": {
-        "api/**.js": {
-        "maxDuration": 60
-        }
-    }
+    ] 
        
   }
   
