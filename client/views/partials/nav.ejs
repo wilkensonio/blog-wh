@@ -17,7 +17,7 @@
             <a class="navbar-brand text-primary px-0 me-1" href="/">
                 <img src="/assets/logo/logo.png" alt="logo" style="width: 30px; height: 30px;">
             </a>
-            <a class="navbar-brand text-primary pl-0" href="/">Kadeeno.tech</a>
+            <a class="navbar-brand text-primary pl-0" href="/">Wilkenson.H</a>
         </div>
         <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -68,6 +68,12 @@
                                             href="/projects/new">New-project</a></li>
 
                                     <% } %>
+                                        <% if (isWriter || isAdmin) { %>
+                                            <li class="nav-item"><a class="nav-link text-white"
+                                                    href="/admin/logout">Logout</a>
+                                            </li>
+
+                                            <% } %>
             </ul>
         </div>
     </div>
