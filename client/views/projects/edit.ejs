@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit-project</title>
+
+    <link rel="stylesheet" href="../../styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+
+</head>
+
+<body>
+    <div class="container max-screen mt-5 text-white">
+        <header class="sticky-top mb-5">
+            <%- include('../partials/nav') %>
+        </header>
+        <h1 class="text-white pt-5 pb-2 d-flex justify-content-center">
+            ✨Update project✨
+        </h1>
+
+        <form action="/projects/edit/<%= project._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" class="form-control" value="<%= project.title %>" required>
+            </div>
+            <div class="form-group">
+                <label for="techStack">Tech Stack (comma-separated)</label>
+                <input type="text" name="techStack" id="techStack" class="form-control"
+                    value="<%= project.techStack.join(',') %>" required>
+            </div>
+            <div class="form-group">
+                <label for="deployedWith">Deployed With</label>
+                <input type="text" name="deployedWith" id="deployedWith" class="form-control"
+                    value="<%= project.deployedWith %>" required>
+            </div>
+            <div class="form-group">
+                <label for="codeUrl">Code URL</label>
+                <input type="url" name="codeUrl" id="codeUrl" class="form-control" value="<%= project.codeUrl %>"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="projectUrl">Project URL</label>
+                <input type="url" name="projectUrl" id="projectUrl" class="form-control"
+                    value="<%= project.projectUrl %>" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" class="form-control"
+                    required><%= project.markdown %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image" class="form-control">
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">Update Project</button>
+            </div>
+        </form>
+    </div>
+    <script src="../../styles/bootstrap-js/bootstrap.min.js"></script>
+</body>
+
+</html>
