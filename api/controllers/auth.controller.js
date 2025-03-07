@@ -60,13 +60,14 @@ const signin = async (req, res, next) => {
         return next(errorHandler(400, "All fields are required."));
     }
     try {
+        
         const validUser = await User.findOne({ email });
-        if (!validUser) {
-            return next(errorHandler(404, "Invalid credentials."));
+        if (!validUser) {   
+            return next(errorHandler(404, "Invalid credentials.")); 
         }
         const validPassword = bcryptjs.compareSync(password, validUser.password);
  
-        if (!validPassword) {
+        if (!validPassword) { 
             return next(errorHandler(401, "Invalid credentials."));
         } 
         const token = jwt.sign({ 
@@ -82,9 +83,9 @@ const signin = async (req, res, next) => {
             secure: process.env.NODE_ENV === 'production', // Ensure cookies are only sent over HTTPS in production
             maxAge: 3600000 // 1 hour
         });
-        return res.redirect('/admin');
+        return res.redirect('/projects');
        
-    } catch (error) { 
+    } catch (error) {   
         return next(error);
     }
 }

@@ -10,14 +10,14 @@ router.use(isAuthenticated);
  
 router.get('/login', (req, res) => { 
     if (req.user) {
-        return res.redirect('/admin'); // Redirect authenticated users to dashboard
-    }
+        return res.redirect('/projects'); 
+    } 
     res.render('dash/index', { partial: 'login' });
 });
 
 router.get('/signup', (req, res) => {
     if (req.user) {
-        return res.redirect('/admin'); // Redirect authenticated users to dashboard
+        return res.redirect('/admin'); 
     }
     res.render('dash/index', { partial: 'signup' });
 });
