@@ -89,7 +89,7 @@ const saveArticleAndRedirect = path => {
             article = await article.save();
             res.redirect(`/posts/${article.slug}`);
         } catch (e) {
-            console.log(e, "Error saving article");
+            
             res.render(`posts/${path}`, { article: article });            
         }
     }
@@ -111,8 +111,7 @@ const sendDiscordMessage = async (msg) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-        });
-        console.log('Message sent to Discord:', response.data);
+        }); 
     } catch (error) {
         console.error('Error sending message to Discord:', error);
     }
@@ -122,10 +121,8 @@ const publishArticle = async (req, res) => {
     try {        
         
         const article = await Article.findById(req.params.id);
-        if (!article) {
-            console.log('Post not found');
-            return;
-            // return res.status(404).send('Article not found');
+        if (!article) { 
+            return res.status(404).send('Article not found');
         }
 
         article.published = true; 
@@ -147,7 +144,7 @@ const publishArticle = async (req, res) => {
     try {
         const article = await Article.findById(req.params.id);
         if (!article) {
-            console.log('Article not found');
+         
             return;
             // return res.status(404).send('Article not found');
         }

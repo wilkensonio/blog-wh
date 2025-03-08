@@ -32,13 +32,13 @@ const deleteProject = async (req, res) => {
                 const imagePath = path.join(__dirname, `../public${project.imageUrl}`); 
                 fs.promises.unlink(imagePath); 
             } catch (error) { 
-                console.log(error, "Error deleting image: File not found");
+               
             }
         }
         await Project.findByIdAndDelete(id);
         res.redirect('/projects');
     } catch (error) {
-        console.log(error, "Error deleting project");
+      
         res.status(400).json({error: error.message});
     }
     
@@ -70,7 +70,7 @@ const createProject = async (req, res) => {
          
         res.redirect(`/projects`); 
     } catch (error) {
-        console.log(error, "Error creating project");
+       
         res.status(400).json({error: error.message});
     } 
 }   
@@ -86,7 +86,7 @@ const editProjectForm = async (req, res) => {
         const isWriter = req.user && req.user.isWriter === true; 
         res.render('projects/edit', {project, isAdmin, isWriter});
     } catch (error) {
-        console.log(error, "Error editing project");
+       
         res.status(400).json({error: error.message});
     }  
 }
@@ -118,7 +118,7 @@ const updateProject = async (req, res) => {
         project.techStack = techStack.trim().split(',');
         project.deployedWith = deployedWith.trim();
         project.slug = slugify(title, {lower: true, strict: true}); 
-        console.log(techStack, "tech stack");
+     
         if (!title || !techStack || !deployedWith || !codeUrl || !projectUrl || !description) {
            return res.redirect(`/projects/edit/${id}`);
         }
