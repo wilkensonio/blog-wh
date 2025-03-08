@@ -8553,8 +8553,7 @@ body {
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
-  text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
+  text-align: var(--bs-body-text-align); 
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -8746,7 +8745,7 @@ kbd {
   padding: 0.1875rem 0.375rem;
   font-size: 0.875em;
   color: var(--bs-body-bg);
-  background-color: var(--bs-body-color);
+ 
   border-radius: 0.25rem;
 }
 kbd kbd {
@@ -9058,8 +9057,7 @@ progress {
 }
 
 .img-thumbnail {
-  padding: 0.25rem;
-  background-color: var(--bs-body-bg);
+  padding: 0.25rem; 
   border: var(--bs-border-width) solid var(--bs-border-color);
   border-radius: var(--bs-border-radius);
   max-width: 100%;
@@ -25125,7 +25123,7 @@ dl li {
 }
 
 .content-wrapper {
-  background: #000000;
+  background: #fff;
   padding: 1.875rem 1.75rem;
   width: 100%;
   -webkit-flex-grow: 1;

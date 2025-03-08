@@ -31,49 +31,59 @@
                 <li class="nav-item"><a class="nav-link text-white resume-link" href="/about">About</a></li>
                 <li class="nav-item"><a class="nav-link text-white resume-link" href="/posts" hidden>Blog-posts</a></li>
                 <!-- <li class="nav-item"><a class="nav-link text-white resume-link" href="/certs">Certifications</a> -->
-                <li class="nav-item"><a class="nav-link text-white resume-link" href="/projects">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white resume-link ">
-                        <span class="d-none d-lg-inline-block">|</span>
-                        <span class="">
-                            <hr style="border: 1px solid rgb(245, 241, 241); width: 100%; margin: 0;">
-                        </span>
-                    </a>
-                </li>
+                <% if (isAdmin) { %>
+                    <li class="nav-item"><a class="nav-link text-white resume-link" href="/projects">Dashboard</a>
 
-                <li class="nav-item" hidden><a class="nav-link text-white resume-link"
-                        href="https://discord.gg/2Ut2WBuSap" target="_blank"><i class="fa-brands fa-discord"></i></a>
-                </li>
-                <li class="nav-item"><a class="nav-link text-white resume-link"
-                        href="https://www.linkedin.com/in/wilkensonh2/" target="_blank"><i
-                            class="fa-brands fa-linkedin"></i></a>
-                </li>
-                <li class="nav-item"><a class="nav-link text-white resume-link" href="https://github.com/wilkensonio"
-                        target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                        <% } else { %>
 
-                <% if (resume) { %>
-                    <li class="nav-item" hidden>
-                        <a class="btn btn-outline-primary" onclick="printResume()"><span class="text-white ">Print
-                                resume</span></a>
+                    <li class="nav-item"><a class="nav-link text-white resume-link" href="/projects">Projects</a>
+                        <% } %>
+
                     </li>
-                    <% } %>
+                    <li class="nav-item">
+                        <a class="nav-link text-white resume-link ">
+                            <span class="d-none d-lg-inline-block">|</span>
+                            <span class="">
+                                <hr style="border: 1px solid rgb(245, 241, 241); width: 100%; margin: 0;">
+                            </span>
+                        </a>
+                    </li>
 
-                        <% if (isWriter || isAdmin) { %>
-                            <li class="nav-item"><a class="nav-link text-white" href="/admin">Dashboard</a></li>
+                    <li class="nav-item" hidden><a class="nav-link text-white resume-link"
+                            href="https://discord.gg/2Ut2WBuSap" target="_blank"><i
+                                class="fa-brands fa-discord"></i></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-white resume-link"
+                            href="https://www.linkedin.com/in/wilkensonh2/" target="_blank"><i
+                                class="fa-brands fa-linkedin"></i></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-white resume-link"
+                            href="https://github.com/wilkensonio" target="_blank"><i
+                                class="fa-brands fa-github"></i></a></li>
 
-                            <% } %>
-                                <% if (isAdmin) { %>
-                                    <li class="nav-item"><a class="nav-link text-white"
-                                            href="/projects/new">New-project</a></li>
+                    <% if (resume) { %>
+                        <li class="nav-item" hidden>
+                            <a class="btn btn-outline-primary" onclick="printResume()"><span class="text-white ">Print
+                                    resume</span></a>
+                        </li>
+                        <% } %>
 
-                                    <% } %>
-                                        <% if (isWriter || isAdmin) { %>
-                                            <li class="nav-item"><a class="nav-link text-white"
-                                                    href="/admin/logout">Logout</a>
-                                            </li>
+                            <% if (isWriter || isAdmin) { %>
+                                <li class="nav-item" hidden><a class="nav-link text-white"
+                                        href="/projects">Dashboard</a></li>
 
-                                            <% } %>
+                                <% } %>
+                                    <% if (isAdmin) { %>
+                                        <li class="nav-item"><a class="nav-link text-white"
+                                                href="/projects/new">New-project</a></li>
+
+                                        <% } %>
+                                            <% if (isWriter || isAdmin) { %>
+                                                <li class="nav-item"><a class="nav-link text-white"
+                                                        href="/admin/logout">Logout</a>
+                                                </li>
+
+                                                <% } %>
             </ul>
         </div>
     </div>

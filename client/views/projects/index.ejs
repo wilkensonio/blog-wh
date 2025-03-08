@@ -156,7 +156,7 @@
         </h1>
         <% if (projects.length> 0) { %>
             <div class="row">
-                <% projects.forEach((project, index)=> { %>
+                <% projects.reverse().forEach((project, index)=> { %>
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <!-- Image for the project -->
@@ -174,15 +174,29 @@
                                             data-techstack='<%= JSON.stringify(project.techStack) %>'
                                             data-deployedwith="<%= project.deployedWith %>"
                                             data-code="<%= project.codeUrl %>" data-project="<%= project.projectUrl %>">
-                                            <i class="fa fa-book text-success"></i> About
+                                            <% if(!isAdmin) {%>
+                                                <i class="fa fa-book text-success"></i> &nbsp;About
+                                                <% } else { %>
+                                                    <span style="letter-spacing: 2rem;">About</span>
+                                                    <% } %>
                                         </a>
                                     </div>
                                     <div>
                                         <% if(isAdmin) {%>
+                                            <form action="/projects/edit/<%= project._id %>?_method=PUT" method="PUT">
+                                                <button type="submit" class="btn btn-info btn-small w-100 mt-2">
+                                                    <span style="letter-spacing: 2rem;">Edit</span>
+                                                </button>
+                                            </form>
+                                            <% } %>
+                                    </div>
+                                    <div>
+                                        <% if(isAdmin) {%>
                                             <form action="/projects/delete/<%= project._id %>?_method=DELETE"
-                                                method="POST">
+                                                method="POST"
+                                                onsubmit="return confirm('Are you sure you want to delete this project?');">
                                                 <button type="submit" class="btn btn-danger btn-small w-100 mt-2">
-                                                    Delete
+                                                    <span style="letter-spacing: 2rem;">Delete</span>
                                                 </button>
                                             </form>
                                             <% } %>
@@ -213,6 +227,8 @@
                 <p class="text-white">No projects found.</p>
                 <% } %>
     </div>
+
+
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
