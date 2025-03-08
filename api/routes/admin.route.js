@@ -28,7 +28,8 @@ router.post('/login', signin);
 router.get('/logout', logout);
 
 router.get('/', isAdminOrWriter, (req, res) => {
-    res.render('dash/index', { partial: 'dashboard' });
+    res.redirect('/admin/login');
+    return
 });
 
 router.get('/subscribe', isAdminOrWriter, (req, res) => {

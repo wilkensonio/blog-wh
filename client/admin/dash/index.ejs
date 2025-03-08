@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Kadeeno.tech</title>
+  <title>W.H</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -26,29 +26,21 @@
   <div class="container-scroller">
     <div class="container-fluid ">
       <!-- partial -->
-      <% if (partial==='subscriber' && (isAdmin || isWriter)) { %>
-        <%- include('../partials/_subscribe') %>
+
+
+
+
+      <% if (partial==='signup' ) { %>
+        <%- include('../partials/_signup') %>
           <% } %>
 
-            <% if (partial==='activities' ) { %>
-              <%- include('../partials/_activity') %>
+            <% if (partial==='login' ) { %>
+              <%- include('../partials/_login') %>
                 <% } %>
 
-                  <% if (partial==='dashboard' ) { %>
-                    <%- include('../partials/_maindash') %>
+                  <% if (partial==='reset' ) { %>
+                    <%- include('../partials/_reset') %>
                       <% } %>
-
-                        <% if (partial==='signup' ) { %>
-                          <%- include('../partials/_signup') %>
-                            <% } %>
-
-                              <% if (partial==='login' ) { %>
-                                <%- include('../partials/_login') %>
-                                  <% } %>
-
-                                    <% if (partial==='reset' ) { %>
-                                      <%- include('../partials/_reset') %>
-                                        <% } %>
 
 
 
