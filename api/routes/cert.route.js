@@ -1,6 +1,6 @@
 const express = require('express');
 const { isAdminOrWriter, isAuthenticated } = require('../middelware/auth.js');
-const upload = require('../utils/multerConfig.js');
+const upload = require('../utils/certUploadConfig.js');
 const {certs, formCert, deleteCert, createCert, editCertForm, updateCert} = require('../controllers/cert.contoller.js');
 
 const router = express.Router();
