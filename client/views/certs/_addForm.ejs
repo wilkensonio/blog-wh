@@ -1,0 +1,12 @@
+<form action="/certs/new" method="POST" enctype="multipart/form-data" class="mb-4">
+    <div class="mb-3">
+        <label for="title" class="form-label">Certificate Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Backend Engineering" required>
+    </div>
+    <div class="mb-3">
+        <label for="certFile" class="form-label">Upload Certificate</label>
+        <input type="file" class="form-control" id="image" name="image" accept=".jpg, .png, .jepg, .pdf">
+        <small class="form-text text-muted">Upload only .jpg, .jpeg, .png formats</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Certificate</button>
+</form>

@@ -45,16 +45,74 @@
         .readmore:hover {
             color: #f1b6a5;
         }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card-body {
+            flex-grow: 1;
+            /* card body takes remaining space in the card */
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
     </style>
 </head>
 
 <body>
+
     <header class="sticky-top mb-5">
         <%- include('../partials/nav') %>
     </header>
 
-    <div class="container max-screen mt-5">
-        <!-- show all certification -->
+    <div class="container max-screen mt-5 text-white" style="margin-top: 100px;">
+        <h1 class="text-white pt-5 pb-2 d-flex justify-content-center">
+            <span>📜</span> Certifications && Certificates
+        </h1>
+
+        <% if (isAdmin) { %>
+            <%- include('_addForm') %>
+
+                <% } %>
+                    <hr>
+
+                    <!-- show all the certs  -->
+                    <div class="row">
+                        <% if (certs.length <=0) { %>
+                            <div class="col-md-12">
+                                <h3 class="text-center">No Certificates yet</h3>
+                            </div>
+                            <% } else { %>
+                                <% certs.reverse().forEach(cert=> { %>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card bg-light text-dark w-100">
+                                            <img src="<%= cert.imageUrl %>" class="card-img-top"
+                                                alt="<%= cert.title %>">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <%= cert.title %>
+                                                </h5>
+
+                                                <% if (isAdmin) { %>
+                                                    <form action="/certs/delete/<%= cert._id %>?_method=DELETE"
+                                                        method="POST">
+                                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                                    </form>
+                                                    <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                                        <% } %>
+                    </div>
+
+
     </div>
 
     <div>
