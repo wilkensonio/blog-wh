@@ -86,7 +86,6 @@
 
         <% if (isAdmin) { %>
             <%- include('_addForm') %>
-
                 <% } %>
                     <hr>
 
@@ -106,25 +105,51 @@
                                                 <h5 class="card-title">
                                                     <%= cert.title %>
                                                 </h5>
+                                                <span data-bs-toggle="modal"
+                                                    data-bs-target="#viewImageModal<%= cert._id %>"
+                                                    style="cursor: pointer;">
+                                                    <i class="fa fa-eye text-primary fs-5"></i>
+                                                </span>
 
                                                 <% if (isAdmin) { %>
                                                     <form action="/certs/delete/<%= cert._id %>?_method=DELETE"
-                                                        method="POST">
+                                                        method="POST" class="d-inline">
                                                         <button class="btn btn-danger btn-sm">Delete</button>
                                                     </form>
                                                     <% } %>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- Modal for viewing image -->
+                                    <div class="modal fade" id="viewImageModal<%= cert._id %>" tabindex="-1"
+                                        aria-labelledby="viewImageModalLabel<%= cert._id %>" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="viewImageModalLabel<%= cert._id %>">
+                                                        <%= cert.title %>
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img src="<%= cert.imageUrl %>" alt="<%= cert.title %>"
+                                                        class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <% }); %>
                                         <% } %>
-                    </div>
-
-
+                    </div> <!-- end of row -->
     </div>
 
     <div>
         <%- include('../partials/footer') %>
     </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
