@@ -8,6 +8,38 @@
   ],
   "routes": [
     {
+      "src": "/certsUploads/(.*)",
+      "dest": "/api/public/certsUploads/$1"
+    },
+    {
+      "src": "/projectUploads/(.*)",
+      "dest": "/api/public/projectUploads/$1"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/posts/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/projects/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/certs/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/about/(.*)",
+      "dest": "/server.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "/server.js"
     }
